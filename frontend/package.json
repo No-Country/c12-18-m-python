@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-react": "7.32.2",
     "prettier": "2.8.8"
   },
   "prettier": {
@@ -28,9 +29,8 @@
     "singleQuote": false,
     "jsxSingleQuote": false,
     "bracketSpacing": true,
-    "bracketSameLine": true,
-    "printWidth": 110,
+    "bracketSameLine": false,
     "singleAttributePerLine": false,
-    "htmlWhitespaceSensitivity": "css"
+    "printWidth": 130
   }
 }
