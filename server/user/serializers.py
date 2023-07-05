@@ -1,24 +1,26 @@
-from rest_framework import serializers
-from .models import User, Employee, Client
+from django.core import serializers
+
+class UserSerializer:
+    @staticmethod
+    def serialize(user):
+        serialized_user = serializers.serialize('json', [user])
+        return serialized_user
+
+    @staticmethod
+    def deserialize(data):
+        deserialized_user = serializers.deserialize('json', data)
+        user = next(deserialized_user).object
+        return user
 
 
-class UserSerializer(serializers.ModelSerializer):
+class ClientSerializer:
+    @staticmethod
+    def serialize(client):
+        serialized_user = serializers.serialize('json', [client])
+        return serialized_user
 
-    class Meta:
-        model = User
-        fields = '__all__'
-
-
-class EmployeeSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
-
-    class Meta:
-        model = Employee
-        fields = '__all__'
-
-class ClientSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
-
-    class Meta:
-        model = Client
-        fields = '__all__'
+    @staticmethod
+    def deserialize(data):
+        deserialized_user = serializers.deserialize('json', data)
+        user = next(deserialized_user).object
+        return user
