@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between ">
           <div className="flex items-center mb-4 md:mb-0">
             <Image className="h-8 w-8" src="/LogoVanity2.svg" alt="Logo" width={100} height={24} priority />
-            <span class="font-bold p-4"> Vanity Reserve</span>
+            <span className="font-bold p-4"> Vanity Reserve</span>
           </div>
           <div className=" flex  mb-4 md:mb-0">
             <ul className=" flex flex-row  space-x-4 mb-4 md:mb-0">
