@@ -1,6 +1,6 @@
 "use client";
 import { Card, CardHeader, CardBody, Typography, Button } from "@material-tailwind/react";
-import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
+
 
 {
   /* Infomación del servicio, se renderiza abajo*/
@@ -14,8 +14,8 @@ const service = {
 };
 export default function OneService() {
   return (
-    <Card className="flex-row w-full ">
-      <CardHeader shadow={false} floated={false} className="w-3/6 shrink-0 m-0 rounded-r-none">
+    <Card className="flex-row  ">
+      <CardHeader shadow={false} floated={false} className="w-3/6 scale-75 shrink-0 m-0 rounded-r-none">
         {/* Link de imagen del servicio*/}
         <img src={service.img} alt={service.name} className="w-full h-full object-cover" />
       </CardHeader>
@@ -32,7 +32,12 @@ export default function OneService() {
           {service.description}
         </Typography>
         <a href="#buttons-with-link">
-          <Button fullWidth color="gray" variant="outlined">
+          <Button
+            className=" shadow-none hover:shadow-none hover:bg-pink hover:text-white  focus:shadow-none focus:scale-105 active:scale-100 "
+            fullWidth
+            color="gray"
+            variant="outlined"
+          >
             Book Now
           </Button>
         </a>

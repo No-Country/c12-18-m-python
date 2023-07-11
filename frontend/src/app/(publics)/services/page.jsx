@@ -1,14 +1,14 @@
 "use client";
-
-import Image from "next/image";
 import IconsServices from "../../../components/IconsServices";
-import OneService from "@/components/OneService";
+import CardsServices from "@/components/CardsServices";
+import ImgGalery from "@/components/ImgGalery";
 
 export default function Services() {
   return (
     <>
       <IconsServices />
-      <OneService />
+      <CardsServices />
+      <ImgGalery />
     </>
   );
 }
