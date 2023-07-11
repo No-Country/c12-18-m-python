@@ -1,3 +1,3 @@
 export default function Layout({ children }) {
-  return <main className="flex min-h-screen flex-col items-center justify-between p-24">{children}</main>;
+  return <main className="min-h-screen items-center  p-24">{children}</main>;
 }
