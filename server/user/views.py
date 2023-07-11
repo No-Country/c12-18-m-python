@@ -21,3 +21,7 @@ def GetUsers(request):
             data, context={'request': request}, many=True)
     return Response(serializer.data)
 
+
+@api_view(['GET'])
+def Auth(request):
+    pass
