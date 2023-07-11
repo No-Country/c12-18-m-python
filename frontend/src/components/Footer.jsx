@@ -20,7 +20,6 @@ export default function Footer() {
             <span className="font-bold p-4"> Vanity Reserve</span>
           </div>
           <div className=" flex  mb-4 md:mb-0">
-          <div className="font-playfair">Hola</div>
             <ul className=" flex flex-row  space-x-4 mb-4 md:mb-0">
               <li>
                 <FaFacebookSquare />
