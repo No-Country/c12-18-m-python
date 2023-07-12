@@ -1,5 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.exceptions import ValidationError
 from rest_framework import status
 
 from .models import User
@@ -10,9 +11,10 @@ from .serializers import *
 def CreateUser(request):
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
-        serializer.save()
-        return Response(status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        user = serializer.save()  # Utilizar el método save() del serializador para crear el usuario
+        return Response(serializer.data, status=201)
+    return Response(serializer.errors, status=400)
+
 
 @api_view(['GET'])
 def GetUsers(request):
@@ -24,4 +26,14 @@ def GetUsers(request):
 
 @api_view(['GET'])
 def Auth(request):
-    pass
+    username = request.query_params.get('username')
+    password = request.query_params.get('password')
+    try:
+        user = User.objects.get(username=username)
+        if user.check_password(password):
+            serializer = UserSerializer(user)
+            return Response(serializer.data)
+        else:
+            raise ValidationError('Contraseña incorrecta')
+    except User.DoesNotExist:
+        raise ValidationError('El usuario no existe')
