@@ -4,7 +4,7 @@ from django.db import models
 class Service(models.Model):
     name = models.CharField('name', max_length=100)
     description = models.CharField('description', max_length=500)
-    precio = models.DecimalField('price', max_digits=6, decimal_places=2)
+    price = models.DecimalField('price', max_digits=6, decimal_places=2, null=True, blank=True, default=100.00)
     image = models.CharField('image', max_length=500)
     # reviews = models.ManyToManyField('user.User', through='Review')
 
