@@ -19,3 +19,4 @@ def GetService(request):
     serializer = ServiceSerializer(
             data, context={'request': request}, many=True)
     return Response(serializer.data)
+
