@@ -1,26 +1,16 @@
-from django.core import serializers
+from rest_framework import serializers
+from user.models import User
 
-class UserSerializer:
-    @staticmethod
-    def serialize(user):
-        serialized_user = serializers.serialize('json', [user])
-        return serialized_user
+class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)  # Configurar el campo como solo escritura
 
-    @staticmethod
-    def deserialize(data):
-        deserialized_user = serializers.deserialize('json', data)
-        user = next(deserialized_user).object
-        return user
+    class Meta:
+        model = User
+        fields = ('username', 'password', 'email', 'first_name', 'last_name', 'admin')
 
-
-class ClientSerializer:
-    @staticmethod
-    def serialize(client):
-        serialized_user = serializers.serialize('json', [client])
-        return serialized_user
-
-    @staticmethod
-    def deserialize(data):
-        deserialized_user = serializers.deserialize('json', data)
-        user = next(deserialized_user).object
+    def create(self, validated_data):
+        password = validated_data.pop('password')  # Obtener la contraseña del diccionario validado
+        user = User.objects.create(**validated_data)  # Crear el usuario con los datos validados
+        user.set_password(password)  # Establecer la contraseña encriptada
+        user.save()
         return user

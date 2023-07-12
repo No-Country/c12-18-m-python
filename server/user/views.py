@@ -1,40 +1,39 @@
-from django.http import JsonResponse
-from django.forms.models import model_to_dict
-from django.views.decorators.csrf import csrf_exempt
-import json
-from .models import *
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from rest_framework.exceptions import ValidationError
+from rest_framework import status
+
+from .models import User
 from .serializers import *
 
 
-@csrf_exempt
-def create_client(request):
+@api_view(['POST'])
+def CreateUser(request):
+    serializer = UserSerializer(data=request.data)
+    if serializer.is_valid():
+        user = serializer.save()  # Utilizar el método save() del serializador para crear el usuario
+        return Response(serializer.data, status=201)
+    return Response(serializer.errors, status=400)
 
-    if request.method == 'GET':
-        clients = Client.query.all()
-        client_dict = [model_to_dict(client) for client in clients]
-        return JsonResponse(client_dict, safe=False)
 
-    elif request.method == 'POST':
+@api_view(['GET'])
+def GetUsers(request):
+    data = User.objects.all()
+    serializer = UserSerializer(
+            data, context={'request': request}, many=True)
+    return Response(serializer.data)
 
-        content_type = request.headers.get('Content-Type')
-        if content_type == 'application/json':
-            try:
-                client_data = json.loads(request.body)
-            except json.JSONDecodeError:
-                return JsonResponse({'error': 'Invalid JSON payload'}, status=400)
-        elif content_type == 'application/x-www-form-urlencoded':
-            client_data = request.POST.dict()
+
+@api_view(['GET'])
+def Auth(request):
+    username = request.query_params.get('username')
+    password = request.query_params.get('password')
+    try:
+        user = User.objects.get(username=username)
+        if user.check_password(password):
+            serializer = UserSerializer(user)
+            return Response(serializer.data)
         else:
-            return JsonResponse({'error': 'Unsupported content type'}, status=415)
-
-        required_fields = ['username', 'password', 'email']
-        missing_fields = [field for field in required_fields if field not in client_data]
-        if missing_fields:
-            return JsonResponse({'error': f'Missing fields: {", ".join(missing_fields)}'}, status=400)
-
-        # Crear el cliente
-        client = Client.objects.create_user(**client_data)
-        client.save()
-        # Devolver la respuesta
-        client_dict = model_to_dict(client)
-        return JsonResponse(client_dict, status=201)
+            raise ValidationError('Contraseña incorrecta')
+    except User.DoesNotExist:
+        raise ValidationError('El usuario no existe')
