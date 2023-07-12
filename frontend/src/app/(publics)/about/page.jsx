@@ -1,9 +1,10 @@
-import Image from "next/image";
+import Bannerup from "@/components/Bannerup";
 
 export default function About() {
   return (
     <>
-      <h1>Hola About</h1>
+      <Bannerup page="about" />
+      <h1>about</h1>
     </>
   );
 }

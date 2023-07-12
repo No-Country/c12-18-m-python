@@ -14,7 +14,7 @@ const iconsLink = [
 export default function IconsServices() {
     return (
         //conteiner completo 
-       <div className="flex flexflex-row min-[320px]: flex-wrap" >       
+       <div className="flex flexflex-row min-[320px]: flex-wrap p-8" >       
         {iconsLink.map((icon) => {
                 return (
                     //container dividido en 6 imagenes de 6 servicios
