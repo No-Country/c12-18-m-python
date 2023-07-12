@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Link from "next/link";
 import { Card, CardHeader, CardBody, Typography, Button, CardFooter } from "@material-tailwind/react";
 
 export default function SingleCard({ name, price, img }) {
@@ -20,14 +20,19 @@ export default function SingleCard({ name, price, img }) {
           </div>
         </CardBody>
         <CardFooter className="pt-0">
-          <Button
+        <Link href="/service">
+        <Button
             className=" shadow-none hover:shadow-none hover:bg-pink hover:text-white focus:shadow-none focus:scale-105 active:scale-100 "
             fullWidth
             color="gray"
             variant="outlined"
+           
+            
           >
             more about this 
           </Button>
+          </Link>
+         
         </CardFooter>
       </Card>
     </div>
