@@ -1,7 +1,7 @@
-'use client'
 import Link from "next/link";
 import Image from "next/image";
 import { FaLinkedinIn, FaFacebookSquare, FaTwitter, FaInstagram } from "react-icons/fa";
+
 const links = [
   { text: "Home", href: "/" },
   { text: "About us", href: "/about" },
@@ -12,7 +12,6 @@ const links = [
 export default function Footer() {
   return (
     <footer className="bg-[#422A3C] text-white ">
-      
       <div className=" p-8 px-72 flex flex-col justify-between ">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between ">
           <div className="flex items-center mb-4 md:mb-0">
