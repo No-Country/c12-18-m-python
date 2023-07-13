@@ -9,7 +9,7 @@ import IconsServices from "@/components/IconsServices";
 
 export default function About() {
   return (
-    <div className="items-center ">
+    <div className="">
       <Bannerup page="about"/>
       <IconsServices/>
       <Values />
