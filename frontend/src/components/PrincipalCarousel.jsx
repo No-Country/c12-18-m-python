@@ -1,14 +1,15 @@
-'use client'
-
-import { Carousel, Typography, Button } from "@material-tailwind/react";
+import { Carousel, Typography, Button } from "@/clientComponents/TailwindComponents";
+import Image from "next/image";
 
 export default function PrincipalCarousel() {
   return (
     <div className="p-5">
       <Carousel autoplay loop className="rounded-xl">
         <div className="relative h-full w-full">
-          <img
+          <Image
             src="https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689088670/Group_35279_2_drg3jo.png"
+            width={1000}
+            height={500}
             alt="image 2"
             className="h-full w-full object-cover"
           />
@@ -25,7 +26,8 @@ export default function PrincipalCarousel() {
               </Typography>
               <div className="flex gap-2">
                 <Button
-                  className=" shadow-none hover:shadow-non bg-pink text-white hover:scale-105 focus:shadow-none focus:scale-105 active:scale-100 "
+                  className=" shadow-none hover:shadow-non bg-pink text-white hover:scale-105 focus:shadow-none
+                   focus:scale-105 active:scale-100 "
                   color="gray"
                   variant="outlined"
                 >
@@ -36,8 +38,10 @@ export default function PrincipalCarousel() {
           </div>
         </div>
         <div className="relative h-full w-full">
-          <img
+          <Image
             src="https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689088117/carrusel_f7ip1e.png"
+            width={1000}
+            height={500}
             alt="image 3"
             className="h-full w-full object-cover"
           />
@@ -53,7 +57,8 @@ export default function PrincipalCarousel() {
               </Typography>
               <div className="flex gap-2">
                 <Button
-                  className=" shadow-none hover:shadow-non bg-pink text-white hover:scale-105 focus:shadow-none focus:scale-105 active:scale-100 "
+                  className=" shadow-none hover:shadow-non bg-pink text-white hover:scale-105 focus:shadow-none
+                   focus:scale-105 active:scale-100 "
                   color="gray"
                   variant="outlined"
                 >

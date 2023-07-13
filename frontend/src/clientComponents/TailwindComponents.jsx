@@ -1,5 +1,9 @@
 "use client";
 
-import { ThemeProvider, Button } from "@material-tailwind/react";
+import { ThemeProvider, Button, Carousel, Typography } from "@material-tailwind/react";
 
-export { ThemeProvider, Button };
+export { Button, Carousel, Typography };
+
+export function ClientThemeProvider({ children }) {
+  return <ThemeProvider>{children}</ThemeProvider>;
+}
