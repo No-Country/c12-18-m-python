@@ -54,6 +54,51 @@ const services = [
     href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/4_ktb8yv.webp",
     price: 100,
   },
+  {
+    name: "Haircut",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/3_btnysw.png",
+    price: 200,
+  },
+  {
+    name: "Body Massage",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/8_dha6se.jpg",
+    price: 300,
+  },
+  {
+    name: "Hairstyle",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/2_ilflki.png",
+    price: 300,
+  },
+  {
+    name: "Haircut",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/3_btnysw.png",
+    price: 200,
+  },
+  {
+    name: "Body Massage",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/8_dha6se.jpg",
+    price: 300,
+  },
+  {
+    name: "Hairstyle",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/2_ilflki.png",
+    price: 300,
+  },
+  {
+    name: "Haircut",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/3_btnysw.png",
+    price: 200,
+  },
+  {
+    name: "Body Massage",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/8_dha6se.jpg",
+    price: 300,
+  },
+  {
+    name: "Hairstyle",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/2_ilflki.png",
+    price: 300,
+  },
 ];
 
 export default function CardsServices({ page }) {

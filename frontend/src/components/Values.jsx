@@ -24,7 +24,7 @@ const values = [
 
 export default function Values() {
   return (
-    <Card className="flex-row w-full mb-10 w-1/2 ">
+    <Card className="flex-row w-full mb-10 justify-center  ">
       <CardBody className="p-8 flex flex-col justify-between">
         <Typography variant="h1" className=" flex justify-center text-[#000000]">
           The work values we thrive for
