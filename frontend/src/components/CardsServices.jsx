@@ -113,13 +113,13 @@ export default function CardsServices({ page }) {
           ? services.map((service) => {
               return (
                 //Se renderizan todos los servicios
-                <SingleCard name={service.name} img={service.href} price={service.price} />
+                <SingleCard key={service.name} name={service.name} img={service.href} price={service.price} />
               );
             })
           : services.slice(0, 8).map((service) => {
               return (
                 //Se renderizan 8
-                <SingleCard name={service.name} img={service.href} price={service.price} />
+                <SingleCard key={service.name} name={service.name} img={service.href} price={service.price} />
               );
             })}
       </div>

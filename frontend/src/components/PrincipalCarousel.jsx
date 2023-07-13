@@ -1,14 +1,25 @@
-'use client'
+import { Carousel, Typography, Button } from "@/clientComponents/TailwindComponents";
+import Image from "next/image";
 
-import { Carousel, Typography, Button } from "@material-tailwind/react";
+const carouselArray = [
+  {
+    src: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689088670/Group_35279_2_drg3jo.png",
+    alt: "Imagen 2",
+    preText: "",
+    title: "",
+    body: "",
+  },
+];
 
 export default function PrincipalCarousel() {
   return (
     <div className="p-5">
       <Carousel autoplay loop className="rounded-xl">
         <div className="relative h-full w-full">
-          <img
+          <Image
             src="https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689088670/Group_35279_2_drg3jo.png"
+            width={1000}
+            height={500}
             alt="image 2"
             className="h-full w-full object-cover"
           />
@@ -25,7 +36,8 @@ export default function PrincipalCarousel() {
               </Typography>
               <div className="flex gap-2">
                 <Button
-                  className=" shadow-none hover:shadow-non bg-pink text-white hover:scale-105 focus:shadow-none focus:scale-105 active:scale-100 "
+                  className=" shadow-none hover:shadow-non bg-pink text-white hover:scale-105 focus:shadow-none
+                   focus:scale-105 active:scale-100 "
                   color="gray"
                   variant="outlined"
                 >
@@ -36,8 +48,10 @@ export default function PrincipalCarousel() {
           </div>
         </div>
         <div className="relative h-full w-full">
-          <img
+          <Image
             src="https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689088117/carrusel_f7ip1e.png"
+            width={1000}
+            height={500}
             alt="image 3"
             className="h-full w-full object-cover"
           />
@@ -53,7 +67,8 @@ export default function PrincipalCarousel() {
               </Typography>
               <div className="flex gap-2">
                 <Button
-                  className=" shadow-none hover:shadow-non bg-pink text-white hover:scale-105 focus:shadow-none focus:scale-105 active:scale-100 "
+                  className=" shadow-none hover:shadow-non bg-pink text-white hover:scale-105 focus:shadow-none
+                   focus:scale-105 active:scale-100 "
                   color="gray"
                   variant="outlined"
                 >
@@ -64,6 +79,43 @@ export default function PrincipalCarousel() {
           </div>
         </div>
       </Carousel>
+    </div>
+  );
+}
+
+function ElementCarousel({ carouselElement }) {
+  return (
+    <div className="relative h-full w-full">
+      <Image
+        src={carouselElement.src}
+        width={1000}
+        height={500}
+        alt={carouselElement.alt}
+        className="h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 grid h-full w-full items-center">
+        <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
+          <Typography variant="lead" color="white" className="mb-12 opacity-80 font-manrope font-bold">
+            {carouselElement.preText}
+          </Typography>
+          <Typography variant="h1" color="white" className=" font-playfair mb-4 text-3xl md:text-4xl lg:text-5xl">
+            {carouselElement.title}
+          </Typography>
+          <Typography variant="lead" color="white" className="mb-12 font-manrope opacity-80">
+            {carouselElement.body}
+          </Typography>
+          <div className="flex gap-2">
+            <Button
+              className=" shadow-none hover:shadow-non bg-pink text-white hover:scale-105 focus:shadow-none
+                   focus:scale-105 active:scale-100 "
+              color="gray"
+              variant="outlined"
+            >
+              Book Now
+            </Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
