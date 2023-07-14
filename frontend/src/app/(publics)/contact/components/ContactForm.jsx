@@ -1,4 +1,4 @@
-import { Card, Input, Checkbox, Button, Typography } from "@/clientComponents/TailwindComponents";
+import { Card, Input, Button } from "@/clientComponents/TailwindComponents";
 
 export default function ContactForm() {
   return (

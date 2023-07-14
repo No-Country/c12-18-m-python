@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Bannerup from "@/components/Bannerup";
 import ContactForm from "./components/ContactForm";
 

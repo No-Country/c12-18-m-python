@@ -1,8 +1,7 @@
-import { Typography } from "@material-tailwind/react";
 import Link from "next/link";
-import SingleCard from "./SigleCard";
+import { Typography } from "@/clientComponents/TailwindComponents";
+import ServiceCard from "@/components/ServiceCard";
 
-//info temporal de los servicios
 const services = [
   {
     name: "Haircut",
@@ -64,22 +63,22 @@ export default function CardsServices({ page }) {
   return (
     <div>
       <div className="flex flexflex-row p-3 min-[320px]: flex-wrap">
-        {page == "services"
+        {page === "services"
           ? services.map((service) => {
               return (
                 //Se renderizan todos los servicios
-                <SingleCard key={service.name} name={service.name} img={service.href} price={service.price} />
+                <ServiceCard key={service.name} name={service.name} img={service.href} price={service.price} />
               );
             })
           : services.slice(0, 8).map((service) => {
               return (
                 //Se renderizan 8
-                <SingleCard key={service.name} name={service.name} img={service.href} price={service.price} />
+                <ServiceCard key={service.name} name={service.name} img={service.href} price={service.price} />
               );
             })}
       </div>
       {/* Renderizado condicional para agregar o quitar la palabra ALL SERVICES */}
-      {page == "services" ? (
+      {page === "services" ? (
         <div></div>
       ) : (
         <div className="flex flexflex-row p-8 justify-center">

@@ -1,4 +1,4 @@
-import { Typography } from "@material-tailwind/react";
+import { Typography } from "@/clientComponents/TailwindComponents";
 import Image from "next/image";
 
 export default function ImgGalery({ name, price, img }) {

@@ -1,4 +1,3 @@
-"use client";
 import PrincipalCarousel from "@/components/PrincipalCarousel";
 import IconsServices from "@/components/IconsServices";
 import CardsServices from "@/components/CardsServices";
