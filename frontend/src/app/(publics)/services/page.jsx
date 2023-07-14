@@ -1,11 +1,11 @@
 import IconsServices from "../../../components/IconsServices";
-import Bannerup from "@/components/Bannerup";
+import BannerUp from "@/components/BannerUp";
 import AllServicesFilter from "@/components/AllServicesFilter";
 
 export default function Services() {
   return (
     <>
-      <Bannerup page="services" />
+      <BannerUp text="Find a Service For You" />
       <IconsServices />
       <AllServicesFilter />
     </>
