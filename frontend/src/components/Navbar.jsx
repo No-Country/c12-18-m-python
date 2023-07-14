@@ -38,14 +38,16 @@ export default function Navbar() {
             </div>
           </div>
           <div className="hidden md:block">
-            <button
+          <Link href="/signin" className="flex items-center text-white hover:text-gray-300">
+          <button
               type="button"
               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md
                text-gray-300 bg-gray-700 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2
                focus:ring-offset-gray-800 focus:ring-white"
             >
               Sign In
-            </button>
+            </button>                
+              </Link>           
           </div>
         </div>
       </div>

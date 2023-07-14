@@ -1,9 +1,11 @@
 import Image from "next/image";
+import Bannerup from "@/components/Bannerup";
 
 export default function Contact() {
   return (
     <>
-      <h1>Hola Contact</h1>
+      <Bannerup page="contact"/>
+      <h1>contact</h1>
     </>
   );
 }
