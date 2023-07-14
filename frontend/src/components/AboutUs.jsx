@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Card, CardHeader, CardBody, Typography } from "@material-tailwind/react";
+import { Card, CardHeader, CardBody, Typography } from "@/clientComponents/TailwindComponents";
 
 export default function AboutUs() {
   return (

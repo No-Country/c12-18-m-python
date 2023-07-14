@@ -1,5 +1,4 @@
-import { Card, CardBody, Typography } from "@material-tailwind/react";
-
+import { Card, CardBody, Typography } from "@/clientComponents/TailwindComponents";
 import Image from "next/image";
 
 const metod = [
@@ -42,7 +41,7 @@ export default function WhatIncludes() {
           <div className="flex-row w-full ">
             {metod.map((met) => {
               return (
-                <div className="flex-row w-full ">
+                <div key={met.name} className="flex-row w-full ">
                   <Image width={33} height={33} alt={met.name} src={met.href} />
 
                   <Typography variant="h6">{met.name}</Typography>

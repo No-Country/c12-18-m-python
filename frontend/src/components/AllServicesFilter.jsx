@@ -1,5 +1,5 @@
-import { Card, Typography, List, ListItem, Checkbox } from "@material-tailwind/react";
-import CardsServices from "./CardsServices";
+import { Card, Typography, List, ListItem, Checkbox } from "@/clientComponents/TailwindComponents";
+import CardsServices from "@/components/CardsServices";
 
 export default function AllServicesFilter() {
   return (
