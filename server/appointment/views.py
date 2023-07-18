@@ -15,15 +15,20 @@ def CreateAppointment(request):
     service_id = data.pop('service')
     serializer = AppointmentSerializer(data=data)
     if serializer.is_valid():
+        service = Service.objects.get(id=service_id)
+        timetable = data.get('timetable')
+        # Verificar si ya hay dos citas para el mismo servicio y turno
+        existing_appointments = Appointment.objects.filter(service=service, timetable=timetable).count()
+        if existing_appointments >= 2:
+            return Response({'message': 'Maximum appointments reached for this service and timetable.'}, status=status.HTTP_400_BAD_REQUEST)
         appointment = serializer.save()
         user = User.objects.get(id=user_id)
         appointment.user = user
-        service = Service.objects.get(id=service_id)
         appointment.service = service
         appointment.save()
         return Response({'message': 'Appointment reserved successfully.'}, status=status.HTTP_201_CREATED)
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 def ListAppointments(request):
