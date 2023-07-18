@@ -39,30 +39,32 @@ export default function AccountMax640() {
  
   return (
     <Fragment>
-      <Accordion open={open === 1} icon={<Icon id={1} open={open} />}>
-        <AccordionHeader className="text-white w-1/2 ml-2 text-center lg:hidden hover:text-pink" onClick={() => handleOpen(1)}>
-          Filters
+      <Accordion className="w-1/3 m-1" open={open === 1} icon={<Icon id={1} open={open} />}>
+        <AccordionHeader className="text-white p-0 m-1 text-center md:hidden hover:text-pink" onClick={() => handleOpen(1)}>
+        <div className="text-lg sm:text-xl" style={{ margin: "auto", width: "fit-content" }}>
+            Account
+          </div>
         </AccordionHeader>
         <AccordionBody>
-          <Card className="w-auto lg:w-1/2">
+          <Card className="w-full">
             <List>
-              <ListItem className="hover:text-pink px-0 mx-0" selected={selected === 1} onClick={() => setSelectedItem(1)}>
+              <ListItem className="hover:text-pink   p-0 m-0" selected={selected === 1} onClick={() => setSelectedItem(1)}>
                 Contact Information
               </ListItem>
-              <ListItem className="hover:text-pink px-0 mx-0" selected={selected === 2} onClick={() => setSelectedItem(2)}>
+              <ListItem className="hover:text-pink p-0 m-0" selected={selected === 2} onClick={() => setSelectedItem(2)}>
                 Appointments
               </ListItem>
             </List>
           </Card>
         </AccordionBody>
       </Accordion>
-      <div className="hidden sm:w-1/4 lg:block lg:p-2 lg:w-1/3">
-        <Card className="sm:w-1/4 lg:w-1/2">
-        <Typography variant="h5" color="blue-gray" className="sm:text-2xl sm:mx-4 lg:text-xl">
+      <div className="hidden  md:block md:p-2 md:w-70">
+        <Card className="md:w-60">
+        <Typography variant="h5" color="blue-gray" className="sm:text-2xl  sm:mx-4 lg:text-xl">
           Account
         </Typography>
-          <List className="sm:w-1/4 " >
-            <ListItem className="hover:text-pink" selected={selected === 1} onClick={() => setSelectedItem(1)}>
+          <List className="" >
+            <ListItem className="hover:text-pink " selected={selected === 1} onClick={() => setSelectedItem(1)}>
               Contact Information
             </ListItem>
             <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
