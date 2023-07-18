@@ -1,5 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.exceptions import ValidationError
 from user.models import User
 from services.models import Service
 from .models import Appointment
@@ -20,12 +21,8 @@ def CreateAppointment(request):
         service = Service.objects.get(id=service_id)
         appointment.service = service
         appointment.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response({'message': 'Appointment reserved successfully.'}, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-
-
 
 
 @api_view(['GET'])
@@ -34,25 +31,18 @@ def ListAppointments(request):
     serializer = AppointmentSerializer(appointments, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
-@api_view(['POST'])
-def CheckAvailability(request):
-    date = request.data.get('date')
-    appointments = Appointment.objects.filter(date=date)
-    available = not appointments.exists()
-    return Response({'available': available}, status=status.HTTP_200_OK)
+@api_view(['GET'])
+def UserAppointments(request):
+    """Recieved the request as query parameters
+        to return a list of appointments by user"""
+    user_id = request.query_params.get('id')
+    try:
+        appointments = Appointment.objects.filter(user_id=user_id)
+        serializer = AppointmentSerializer(appointments, many=True)
+        return Response(serializer.data, status=201)
+    except User.DoesNotExist:
+        raise ValidationError('User Does not exist')
 
 @api_view(['GET'])
-def ListAvailableSlots(request, date):
-    appointments = Appointment.objects.filter(date=date, availability=True)
-    slots = [str(appointment.time) for appointment in appointments]
-    return Response({'slots': slots}, status=status.HTTP_200_OK)
-
-@api_view(['POST'])
-def ReserveSlot(request):
-    date = request.data.get('date')
-    time = request.data.get('time')
-    appointment = Appointment.objects.get(date=date, time=time, availability=True)
-    appointment.availability = False
-    appointment.user = request.user
-    appointment.save()
-    return Response({'message': 'Appointment reserved successfully.'}, status=status.HTTP_200_OK)
+def AvailableHours(request):
+    """"""
