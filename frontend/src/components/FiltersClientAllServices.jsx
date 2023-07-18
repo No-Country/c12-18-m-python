@@ -29,8 +29,8 @@ export default function FiltersClientAllServices() {
     <Fragment>
       {/*Pantalla mobil y tablets*/}
       <Accordion open={open === 1} icon={<Icon id={1} open={open} />}>
-        <AccordionHeader className="text-white w-1/6 m-1 text-center lg:hidden hover:text-pink" onClick={() => handleOpen(1)}>
-          <div className="text-basic sm:text-lg" style={{ margin: "auto", width: "fit-content" }}>
+        <AccordionHeader className="text-white w-1/6 p-0 m-1 text-center lg:hidden hover:text-pink" onClick={() => handleOpen(1)}>
+          <div className="text-basic sm:text-lg sm:w-1/5" style={{ margin: "auto", width: "fit-content" }}>
             Filters
           </div>
         </AccordionHeader>
@@ -84,13 +84,13 @@ export default function FiltersClientAllServices() {
         </AccordionBody>
       </Accordion>
       {/*Pantalla grandes*/}
-      <div className="hidden sm:w-1/4 lg:block lg:p-2 lg:w-1/3">
-        <Card className="sm:w-1/4 lg:w-1/3">
-          <div className="w-60 p-0 m-2">
+      <div className="hidden  lg:block lg:p-2  ">
+        <Card className="w-0">
+          <div className="w-60 p-0 m-1">
             <Card>
               <List>
                 <div className="flex flex-row">
-                  <Card className="h-auto w-full shadow-xl shadow-blue-gray-900/5 ">
+                  <Card className="h-auto w-0 shadow-xl shadow-blue-gray-900/5 ">
                     <div className="mb-2 p-2">
                       <Typography variant="h5" color="blue-gray" className="font-manrope font-bold">
                         FILTERS
