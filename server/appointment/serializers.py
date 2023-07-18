@@ -6,9 +6,12 @@ from user.serializers import UserSerializer
 
 class AppointmentSerializer(serializers.ModelSerializer):
 
-    service = ServiceSerializer()
-    user = UserSerializer()
+    service = ServiceSerializer(required=False)
+    user = UserSerializer(required=False)
+    time = serializers.CharField(source='get_timetable_display', read_only=True)
+
 
     class Meta:
         model = Appointment
         fields = '__all__'
+

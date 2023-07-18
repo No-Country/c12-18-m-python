@@ -14,9 +14,12 @@ class Appointment(models.Model):
     day = models.DateField(null=False, verbose_name="Day", help_text="Dia de la cita")
     timetable = models.CharField(max_length=10, choices=TIMEBLE)
     # FKs
-    service = models.ForeignKey(Service, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, null=True, blank=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=True, blank=True,  on_delete=models.CASCADE)
 
+    @property
+    def timetable_display(self):
+        return dict(TIMEBLE).get(self.timetable)
     # Falta crear la app appointment para poder conectar esta pk
 
     #from payment.models import Payment

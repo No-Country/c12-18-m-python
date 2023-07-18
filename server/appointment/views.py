@@ -10,17 +10,23 @@ from .serializers import AppointmentSerializer
 @api_view(['POST'])
 def CreateAppointment(request):
     data = request.data
-    """print(data)
-    user = User.objects.filter(id=data.get('user')).values().first()
-    service = Service.objects.filter(id=data.get('service')).values().first()
-    data['user'] = user
-    data['service'] = service
-    print(data)"""
+    user_id = data.pop('user')
+    service_id = data.pop('service')
     serializer = AppointmentSerializer(data=data)
     if serializer.is_valid():
-        serializer.save()
+        appointment = serializer.save()
+        user = User.objects.get(id=user_id)
+        appointment.user = user
+        service = Service.objects.get(id=service_id)
+        appointment.service = service
+        appointment.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+
 
 @api_view(['GET'])
 def ListAppointments(request):
