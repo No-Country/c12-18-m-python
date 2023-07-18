@@ -41,7 +41,7 @@ export default function AccountMax640() {
     <Fragment>
       <Accordion open={open === 1} icon={<Icon id={1} open={open} />}>
         <AccordionHeader className="text-white w-1/2 ml-2 text-center lg:hidden hover:text-pink" onClick={() => handleOpen(1)}>
-          Account
+          Filters
         </AccordionHeader>
         <AccordionBody>
           <Card className="w-auto lg:w-1/2">
@@ -56,7 +56,7 @@ export default function AccountMax640() {
           </Card>
         </AccordionBody>
       </Accordion>
-      <div className="hidden sm:w-1/4 lg:block lg:p-2">
+      <div className="hidden sm:w-1/4 lg:block lg:p-2 lg:w-1/3">
         <Card className="sm:w-1/4 lg:w-1/2">
         <Typography variant="h5" color="blue-gray" className="sm:text-2xl sm:mx-4 lg:text-xl">
           Account

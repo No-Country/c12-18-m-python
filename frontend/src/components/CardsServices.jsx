@@ -1,6 +1,7 @@
+"use client";
 import { Typography } from "@material-tailwind/react";
 import Link from "next/link";
-import SingleCard from "./SigleCard";
+import SigleCard from "./SigleCard";
 
 //info temporal de los servicios
 const services = [
@@ -63,20 +64,26 @@ export default function CardsServices({ page }) {
 
   return (
     <div>
-      <div className="flex flexflex-row p-3 min-[320px]: flex-wrap">
-        {page == "services"
-          ? services.map((service) => {
-              return (
-                //Se renderizan todos los servicios
-                <SingleCard name={service.name} img={service.href} price={service.price} />
-              );
-            })
-          : services.slice(0, 8).map((service) => {
-              return (
-                //Se renderizan 8
-                <SingleCard name={service.name} img={service.href} price={service.price} />
-              );
-            })}
+      {/* Renderizado condicional para agregar o quitar la palabra ALL SERVICES */}
+      {page == "services" ? (
+        <div></div>
+      ) : (
+        <div className="flex flexflex-row p-8 justify-center">
+          <Link href="/services">
+            <Typography className=" font-manrope text-pink font-bold  hover:text-black">SERVICES</Typography>
+          </Link>
+        </div>
+      )}
+      <div className="flex flex-row p-3 min-h-[230px] min-w-[320px] flex-wrap">
+        {page === "services"
+          ? services.map((service) => (
+              // Se renderizan todos los servicios
+              <SigleCard className="min-h-[130px]" name={service.name} img={service.href} price={service.price} />
+            ))
+          : services.slice(0, 8).map((service) => (
+              // Se renderizan 8 servicios
+              <SigleCard className="min-h-[230px]" name={service.name} img={service.href} price={service.price} />
+            ))}
       </div>
       {/* Renderizado condicional para agregar o quitar la palabra ALL SERVICES */}
       {page == "services" ? (
