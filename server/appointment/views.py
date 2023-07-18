@@ -1,14 +1,22 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from user.models import User
+from services.models import Service
 from .models import Appointment
 from rest_framework import status
 from .serializers import AppointmentSerializer
 
 
-'''
 @api_view(['POST'])
 def CreateAppointment(request):
-    serializer = AppointmentSerializer(data=request.data)
+    data = request.data
+    """print(data)
+    user = User.objects.filter(id=data.get('user')).values().first()
+    service = Service.objects.filter(id=data.get('service')).values().first()
+    data['user'] = user
+    data['service'] = service
+    print(data)"""
+    serializer = AppointmentSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -42,4 +50,3 @@ def ReserveSlot(request):
     appointment.user = request.user
     appointment.save()
     return Response({'message': 'Appointment reserved successfully.'}, status=status.HTTP_200_OK)
-'''
