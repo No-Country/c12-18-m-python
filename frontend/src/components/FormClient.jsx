@@ -3,8 +3,8 @@ import { Card, Input, Button, Typography } from "@material-tailwind/react";
 
 export default function FormClient() {
     return (
-      <Card className="m-5" color="transparent" shadow={false}>
-        <Typography className="my-2" variant="h4" color="blue-gray">
+      <Card className="mx-8 w-full" color="transparent" shadow={false}>
+        <Typography className="my-4" variant="h4" color="blue-gray">
           Contact Information
         </Typography>
   
@@ -20,10 +20,10 @@ export default function FormClient() {
           </div>
           <div className="flex flex-col lg:grid grid-cols-2 gap-4">
             <Button
-              className="text-xl bg-pink hover:bg-blue-500 active:bg-pink lg:w-1/2 md:text-lg"
+              className="text-2xl bg-pink hover:bg-blue-500 active:bg-pink lg:w-1/2 "
               fullWidth
             >
-              Edit Information
+              Edit 
             </Button>
             <Button
               className="text-2xl bg-pink  hover:bg-blue-500 active:bg-pink lg:w-1/2 lg:justify-self-end"

@@ -48,10 +48,10 @@ export default function AccountMax640() {
         <AccordionBody>
           <Card className="w-full">
             <List>
-              <ListItem className="hover:text-pink   p-0 m-0" selected={selected === 1} onClick={() => setSelectedItem(1)}>
+              <ListItem className="hover:text-pink p-2 m-0" selected={selected === 1} onClick={() => setSelectedItem(1)}>
                 Contact Information
               </ListItem>
-              <ListItem className="hover:text-pink p-0 m-0" selected={selected === 2} onClick={() => setSelectedItem(2)}>
+              <ListItem className="hover:text-pink p-2 m-0" selected={selected === 2} onClick={() => setSelectedItem(2)}>
                 Appointments
               </ListItem>
             </List>

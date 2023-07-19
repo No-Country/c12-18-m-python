@@ -78,23 +78,13 @@ export default function CardsServices({ page }) {
         {page === "services"
           ? services.map((service) => (
               // Se renderizan todos los servicios
-              <SigleCard
-                className="min-h-[130px]"
-                key={service.name}
-                name={service.name}
-                img={service.href}
-                price={service.price}
-              />
+              <SigleCard className="min-h-[130px]" key={service.name} 
+              name={service.name} img={service.href} price={service.price} />
             ))
           : services.slice(0, 8).map((service) => (
               // Se renderizan 8 servicios
-              <SigleCard
-                className="min-h-[230px]"
-                key={service.name}
-                name={service.name}
-                img={service.href}
-                price={service.price}
-              />
+              <SigleCard className="min-h-[230px]" key={service.name} name={service.name} 
+              img={service.href} price={service.price} />
             ))}
       </div>
       {/* Renderizado condicional para agregar o quitar la palabra ALL SERVICES */}

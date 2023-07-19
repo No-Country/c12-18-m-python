@@ -1,13 +1,24 @@
+"use client";
+
+import AboutUs from "@/components/AboutUs";
 import Bannerup from "@/components/Bannerup";
-import FiltersClientAllServices from "@/components/FiltersClientAllServices";
+ HEAD
+
+
+import ImgGalery from "@/components/ImgGalery";
+import Values from "@/components/Values";
+import WhatIncludes from "@/components/WhatInclues";
+
 
 export default function About() {
   return (
-    <>
+    <div>
       <Bannerup page="about" />
-      <h1>about</h1>
-      <FiltersClientAllServices/>
-     
-    </>
+      <Values />
+      <AboutUs />
+      <WhatIncludes />
+      <ImgGalery />
+    </div>
+
   );
 }
