@@ -1,6 +1,4 @@
-
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,10 +7,10 @@ const NavLinks = [
   { text: "About us", href: "/about" },
   { text: "Contact", href: "/contact" },
   { text: "Services", href: "/services" },
-  { text: "AddServices", href: "/addService" },
 ];
+import { Avatar, Typography } from "@material-tailwind/react";
 
-export default function Navbar() {
+export default function Example() {
   return (
     <nav className="bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -40,17 +38,20 @@ export default function Navbar() {
               })}
             </div>
           </div>
-          <div className="hidden md:block">
-            <Link href="/signin" className="flex items-center text-white hover:text-gray-300">
-              <button
-                type="button"
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md
-               text-gray-300 bg-gray-700 hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2
-               focus:ring-offset-gray-800 focus:ring-white"
-              >
-                Sign In
-              </button>
-            </Link>
+          <div className="hidden md:block border-3">
+            {/*Avatar*/}
+            <div className="flex items-center gap-4 border-solid border-black border-2 px-5">
+              <Avatar className="m-1" src="/img/face-2.jpg" alt="avatar" />
+              <div>
+                <Typography variant="h6" color="black" className="mr-1">
+                  Tania Andrew
+                </Typography>
+                <Typography variant="small" color="gray" className="font-normal">
+                  Client
+                </Typography>
+              </div>
+              {/*Avatar*/}
+            </div>
           </div>
         </div>
       </div>
