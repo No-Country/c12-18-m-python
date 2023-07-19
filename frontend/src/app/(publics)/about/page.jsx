@@ -15,5 +15,6 @@ export default function About() {
       <WhatIncludes />
       <ImgGalery />
     </div>
+
   );
 }

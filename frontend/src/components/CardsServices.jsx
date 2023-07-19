@@ -1,3 +1,4 @@
+"use client";
 import { Typography } from "@material-tailwind/react";
 import Link from "next/link";
 import SingleCard from "./SigleCard";
@@ -76,6 +77,7 @@ export default function CardsServices({ page }) {
 
   return (
     <div>
+
       <div className="flex flexflex-row p-3 min-[320px]: flex-wrap">
         {page == "services"
           ? services.map((service, index) => {
@@ -96,6 +98,7 @@ export default function CardsServices({ page }) {
 
               );
             })}
+
       </div>
       {/* Renderizado condicional para agregar o quitar la palabra ALL SERVICES */}
       {page == "services" ? (
