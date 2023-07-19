@@ -1,4 +1,5 @@
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
+
 import { useState } from "react";
 
 export default function Login() {
@@ -48,6 +49,7 @@ export default function Login() {
     setusername("");
   };
 
+
   return (
     <div className=" justify-center flex flex-row flex-wrap divide-x divide-gray-400">
       {/* registro */}
@@ -63,6 +65,7 @@ export default function Login() {
         </Typography>
         <form onSubmit={handleSubmit} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
           <div className="mb-4 flex flex-col gap-6">
+
             <Input size="lg" label="Name" id="first_name" value={first_name} onChange={(e) => setfirst_name(e.target.value)} />
             <Input size="lg" label="Username" id="username" value={username} onChange={(e) => setusername(e.target.value)} />
             <Input size="lg" label="Email" id="email" value={email} onChange={(e) => setemail(e.target.value)} />
@@ -74,6 +77,7 @@ export default function Login() {
               value={password}
               onChange={(e) => setpassword(e.target.value)}
             />
+
           </div>
 
           <Button
