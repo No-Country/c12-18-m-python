@@ -1,9 +1,12 @@
 import { Typography } from "@material-tailwind/react";
 import Link from "next/link";
 import SingleCard from "./SigleCard";
+import { GetService, fetchservices } from "@/stateComponents/ProbarServicios";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 
 //info temporal de los servicios
-const services = [
+const serv = [
   {
     name: "Haircut",
     href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/3_btnysw.png",
@@ -60,21 +63,37 @@ export default function CardsServices({ page }) {
   // prop que dice en que pagina esta para renderizado condicional = "services"
   //Cuandoe esta en la pagina principal se renderizan 8 cards slice(0, 8) y el link ALL SERVICES
   // Cuando esta en la pagina services se renderizan todos los servicios y se desaparece ALL SERVICES
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await GetService();
+      setServices(data);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div>
       <div className="flex flexflex-row p-3 min-[320px]: flex-wrap">
         {page == "services"
-          ? services.map((service) => {
+          ? services.map((service, index) => {
               return (
                 //Se renderizan todos los servicios
-                <SingleCard key={service.name} name={service.name} img={service.href} price={service.price} />
+
+
+                <SingleCard key={index} name={service.name} img={service.image} price={service.price} />
+
               );
             })
-          : services.slice(0, 8).map((service) => {
+          : services.slice(0, 8).map((service, index) => {
               return (
                 //Se renderizan 8
-                <SingleCard key={service.name} name={service.name} img={service.href} price={service.price} />
+
+
+                <SingleCard key={index} name={service.name} img={service.image} price={service.price} />
+
               );
             })}
       </div>
