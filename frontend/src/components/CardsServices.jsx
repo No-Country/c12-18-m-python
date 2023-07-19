@@ -3,7 +3,7 @@ import { Typography } from "@material-tailwind/react";
 import Link from "next/link";
 import SigleCard from "./SigleCard";
 
-//info temporal de los servicios
+//info temporal de servicios
 const services = [
   {
     name: "Haircut",
