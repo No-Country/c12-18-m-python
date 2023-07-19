@@ -6,7 +6,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('username', 'password', 'email', 'first_name', 'last_name', 'admin')
+        fields = ('id', 'username', 'password', 'email', 'first_name', 'last_name', 'admin')
 
     def create(self, validated_data):
         password = validated_data.pop('password')  # Obtener la contraseña del diccionario validado
