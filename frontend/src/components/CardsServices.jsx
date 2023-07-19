@@ -1,9 +1,9 @@
 "use client";
 import { Typography } from "@material-tailwind/react";
 import Link from "next/link";
-import SigleCard from "./SigleCard";
+import SingleCard from "./SigleCard";
 
-//info temporal de servicios
+//info temporal de los servicios
 const services = [
   {
     name: "Haircut",
