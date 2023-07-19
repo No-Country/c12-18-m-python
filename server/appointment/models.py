@@ -3,10 +3,10 @@ from services.models import Service
 from user.models import User
 
 TIMEBLE = (
-    ("1", "08:00 to 08:30"),
-    ("2", "08:30 to 09:00"),
-    ("3", "09:00 to 09:30"),
-    ("4", "09:30 to 10:00"),
+        ("1", "08:00 to 08:30"),
+        ("2", "08:30 to 09:00"),
+        ("3", "09:00 to 09:30"),
+        ("4", "09:30 to 10:00"),
 )
 
 class Appointment(models.Model):
