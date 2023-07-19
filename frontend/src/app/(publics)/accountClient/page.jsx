@@ -7,20 +7,15 @@ import FormClient from "@/components/FormClient";
 export default function Account() {
   return (
     <>
-      <div className="md:flex ">
+      <div className=" w-full md:flex ">
         <div className="flex md:w-auto md:block">
           <AccountMax640 />
           <FiltersClientAllServices />
         </div>
-        <div className="md:w-full grid md:flex flex-wrap">
-          {/*<FormClient /> */}
-          <CardClient />
-          <CardClient />
-          <CardClient />
-          <CardClient />
-          <CardClient />
-          <CardClient />
+        <div className="flex w-auto" >
+        <FormClient/>
         </div>
+         
       </div>
     </>
   );
