@@ -82,14 +82,18 @@ export default function CardsServices({ page }) {
               return (
                 //Se renderizan todos los servicios
 
+
                 <SingleCard key={index} name={service.name} img={service.image} price={service.price} />
+
               );
             })
           : services.slice(0, 8).map((service, index) => {
               return (
                 //Se renderizan 8
 
+
                 <SingleCard key={index} name={service.name} img={service.image} price={service.price} />
+
               );
             })}
       </div>
