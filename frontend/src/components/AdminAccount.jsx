@@ -27,7 +27,7 @@ export default function AdminAccount() {
 
   return (
     <Fragment>
-      <Accordion className="w-1/3 m-1" open={open === 1} icon={<Icon id={1} open={open} />}>
+      <Accordion className="w-1/2 m-1" open={open === 1} icon={<Icon id={1} open={open} />}>
         <AccordionHeader className="text-white p-0 m-1 text-center md:hidden hover:text-pink" onClick={() => handleOpen(1)}>
           <div className="text-base sm:text-xl" style={{ margin: "auto", width: "fit-content" }}>
             Account Admin
@@ -36,11 +36,23 @@ export default function AdminAccount() {
         <AccordionBody>
           <Card className="w-full">
             <List>
-              <ListItem className="hover:text-pink   p-0 m-0" selected={selected === 1} onClick={() => setSelectedItem(1)}>
+              <ListItem className="hover:text-pink" selected={selected === 1} onClick={() => setSelectedItem(1)}>
                 Contact Information
               </ListItem>
-              <ListItem className="hover:text-pink p-0 m-0" selected={selected === 2} onClick={() => setSelectedItem(2)}>
+              <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
                 Appointments
+              </ListItem>
+              <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
+                History Sales
+              </ListItem>
+              <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
+                Users
+              </ListItem>
+              <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
+                Services
+              </ListItem>
+              <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
+                Calendar
               </ListItem>
             </List>
           </Card>
