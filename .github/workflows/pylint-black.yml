@@ -1,6 +1,6 @@
-name: Pylint & Black
+name: Pylint
 
-on: [pull_request]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -20,7 +20,7 @@ jobs:
         pip install pylint black
     - name: Adding formatting with Black
       run: |
-        black --diff --check $(git ls-files '*.py')
+        black --check --verbose $(git ls-files '*.py')
     - name: Analysing the code with pylint
       run: |
         pylint --disable=C0103,C0114,C0301,C0415,C1801 $(git ls-files '*.py')
