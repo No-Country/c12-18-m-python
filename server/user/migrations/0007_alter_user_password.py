@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('user', '0006_delete_client_delete_employee_remove_user_role_and_more'),
+        ("user", "0006_delete_client_delete_employee_remove_user_role_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='user',
-            name='password',
+            model_name="user",
+            name="password",
             field=models.CharField(max_length=128),
         ),
     ]
