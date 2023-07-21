@@ -1,12 +1,12 @@
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
 import { useState } from "react";
-// import { useAuthContext } from "@/contexts/authContext";
+import { useAuthContext } from "@/contexts/authContext";
 
 import { useRouter } from "next/navigation";
 
 export default function Login() {
   const router = useRouter();
-  // const { login } = useAuthContext();
+  const { login } = useAuthContext();
   const [form, setForm] = useState({
     password: "",
     username: "",
