@@ -1,1 +1,1 @@
-_all_ = ['ServiceSerializer']
+_all_ = ["ServiceSerializer"]
