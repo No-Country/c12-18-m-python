@@ -7,3 +7,4 @@ urlpatterns = [
     path('user/', UserAppointments),
     path('hours/', AvailableHours),
 ]
+

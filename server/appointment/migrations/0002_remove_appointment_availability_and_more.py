@@ -5,30 +5,42 @@ import django.utils.timezone
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('appointment', '0001_initial'),
+        ("appointment", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='appointment',
-            name='availability',
+            model_name="appointment",
+            name="availability",
         ),
         migrations.RemoveField(
-            model_name='appointment',
-            name='date',
+            model_name="appointment",
+            name="date",
         ),
         migrations.AddField(
-            model_name='appointment',
-            name='day',
-            field=models.DateField(default=django.utils.timezone.now, help_text='Dia de la cita', verbose_name='Dia'),
+            model_name="appointment",
+            name="day",
+            field=models.DateField(
+                default=django.utils.timezone.now,
+                help_text="Dia de la cita",
+                verbose_name="Dia",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='appointment',
-            name='timetable',
-            field=models.CharField(choices=[('1', '08:00 to 08:30'), ('2', '08:30 to 09:00'), ('3', '09:00 to 09:30'), ('4', '09:30 to 10:00')], default=django.utils.timezone.now, max_length=10),
+            model_name="appointment",
+            name="timetable",
+            field=models.CharField(
+                choices=[
+                    ("1", "08:00 to 08:30"),
+                    ("2", "08:30 to 09:00"),
+                    ("3", "09:00 to 09:30"),
+                    ("4", "09:30 to 10:00"),
+                ],
+                default=django.utils.timezone.now,
+                max_length=10,
+            ),
             preserve_default=False,
         ),
     ]
