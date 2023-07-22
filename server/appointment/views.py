@@ -1,5 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from collections import Counter
 from rest_framework.exceptions import ValidationError
 from user.models import User
 from services.models import Service
@@ -64,38 +65,24 @@ def UserAppointments(request):
 
 @api_view(["GET"])
 def AvailableHours(request):
+    """"""
     hours = {
-        "1": "08:00 to 08:30",
-        "2": "08:30 to 09:00",
-        "3": "09:00 to 09:30",
-        "4": "09:30 to 10:00",
-        "5": "10:00 to 10:30",
-        "6": "10:30 to 11:00",
-        "7": "11:00 to 11:30",
-        "8": "11:30 to 12:00",
-        "9": "12:00 to 12:30",
-        "10": "12:30 to 01:00",
-        "11": "01:00 to 01:30",
-        "12": "01:30 to 02:00",
-        "13": "02:00 to 02:30",
-        "14": "02:30 to 03:00",
-        "15": "03:00 to 03:30",
-        "16": "03:30 to 04:00",
-        "17": "04:00 to 04:30",
-        "18": "04:30 to 05:00",
+        "1": "08:00 to 08:30", "2": "08:30 to 09:00", "3": "09:00 to 09:30", "4": "09:30 to 10:00",
+        "5": "10:00 to 10:30", "6": "10:30 to 11:00", "7": "11:00 to 11:30", "8": "11:30 to 12:00",
+        "9": "12:00 to 12:30", "10": "12:30 to 01:00", "11": "01:00 to 01:30", "12": "01:30 to 02:00",
+        "13": "02:00 to 02:30", "14": "02:30 to 03:00", "15": "03:00 to 03:30", "16": "03:30 to 04:00",
+        "17": "04:00 to 04:30", "18": "04:30 to 05:00"
     }
 
-    service_id = request.query_params.get("service")
-    day = request.query_params.get("day")
+    service_id = request.query_params.get('service')
+    day = request.query_params.get('day')
 
     appointments = Appointment.objects.filter(day=day, service_id=service_id)
 
-    timetable_values = appointments.values_list("timetable", flat=True)
+    timetable_values = appointments.values_list('timetable', flat=True)
     timetable_list = list(timetable_values)
 
-    repeated_values = [
-        value for value, count in Counter(timetable_list).items() if count > 1
-    ]
+    repeated_values = [value for value, count in Counter(timetable_list).items() if count > 1]
     copy = hours.copy()
     for key in repeated_values:
         copy.pop(key, None)
