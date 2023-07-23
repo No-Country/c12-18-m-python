@@ -96,7 +96,7 @@ export default function OneService() {
               {/* insertar el metodo de pago */}
               <Card color="transparent" shadow={false} className="">
                 <div className="mb-2   ">
-                  <Typography className="font-playfair">Card Data</Typography>
+                  <Typography className="font-playfair"> Payment </Typography>
                   <div className="mb-4 flex flex-col w-full gap-6 justify-center">
                     <Input label="Name" />
                     <Input label="Card number" />

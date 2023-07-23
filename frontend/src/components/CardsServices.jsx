@@ -130,7 +130,7 @@ export default function CardsServices({ page }) {
                 //Se renderizan todos los servicios
 
 
-                <SingleCard key={index} name={service.name} img={service.image} price={service.price} />
+                <SingleCard key={index} name={service.name} img={service.image} price={service.price} description={service.description} />
 
               );
             })
