@@ -1,12 +1,12 @@
-'use client'
-import { Typography } from "@material-tailwind/react";
+"use client";
+import Login from "@/components/Login";
+import Bannerup from "@/components/Bannerup";
+import Register from "@/components/Register";
 
-export default function Admin() {
-    return (
-      <>
-      <Typography> ADMIN panel user </Typography>
-       
-      </>
-    );
-  }
-  
+export default function Signin() {
+  return (
+    <div className="justify-center ">
+      <h1>Ruta admin</h1>
+    </div>
+  );
+}
