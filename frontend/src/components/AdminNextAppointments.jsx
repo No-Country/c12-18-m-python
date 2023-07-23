@@ -1,7 +1,7 @@
-export default function AdminAppointments() {
+export default function AdminNextAppointments() {
     return (
       <div className="bg-white m-3 p-2">
-        <span className="text-black text-xl font-bold">Appointments Today</span>
+        <span className="text-black text-xl font-bold">Next Appointments</span>
         <div className="flex justify-between my-2">
           <span 
           className="text-black text-base w-60 sm:w-1/2 md:w-96 lg:w-2/5 xl:w-1/3 sm:flex justify-end">

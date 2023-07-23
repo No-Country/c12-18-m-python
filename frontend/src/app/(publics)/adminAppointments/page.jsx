@@ -1,4 +1,5 @@
 import AdminAppointments from "@/components/AdminAppointments";
+import AdminNextAppointments from "@/components/AdminNextAppointments";
 import CardAppointments from "@/components/CardAppointments";
 
 export default function Appointments() {
@@ -6,12 +7,12 @@ export default function Appointments() {
     <div>
       <AdminAppointments />
       <div>
-        <div >
-            <CardAppointments />
-            <CardAppointments />
-            <CardAppointments />
-            <CardAppointments />
-            <CardAppointments />
+        <div>
+          <CardAppointments />
+        </div>
+        <AdminNextAppointments />
+        <div>
+          <CardAppointments />
         </div>
       </div>
     </div>
