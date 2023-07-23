@@ -9,10 +9,13 @@ const NavLinks = [
   { text: "About us", href: "/about" },
   { text: "Contact", href: "/contact" },
   { text: "Services", href: "/services" },
-  { text: "AddServices", href: "/addService" },
 ];
 
 export default function Navbar() {
+  const auth = useAuthContext();
+  //Datos del usuario
+  const authUser= auth.authTokens   
+
   return (
     <nav className="bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
