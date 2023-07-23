@@ -9,9 +9,13 @@ export default function Appointments() {
       <div>
         <div>
           <CardAppointments />
+          <CardAppointments />
+          <CardAppointments />
         </div>
         <AdminNextAppointments />
         <div>
+          <CardAppointments />
+          <CardAppointments />
           <CardAppointments />
         </div>
       </div>
