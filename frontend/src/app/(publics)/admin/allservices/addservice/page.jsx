@@ -1,12 +1,12 @@
-'use client'
-import { Typography } from "@material-tailwind/react";
+"use client";
+
+import ExampleForm from "@/components/FormAddServices";
+import FormAddServices from "@/components/FormAddServices";
 
 export default function Addservice() {
-    return (
-      <>
-      <Typography> Add SERVICE </Typography>
-       
-      </>
-    );
-  }
-  
+  return (
+    <div>
+      <FormAddServices />
+    </div>
+  );
+}

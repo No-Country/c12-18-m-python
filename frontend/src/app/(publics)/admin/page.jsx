@@ -1,12 +1,20 @@
 "use client";
-import Login from "@/components/Login";
-import Bannerup from "@/components/Bannerup";
-import Register from "@/components/Register";
+import AdminAccount from "@/components/AdminAccount";
+import FormClient from "@/components/FormClient";
+import { useAuthContext } from "@/contexts/authContext";
 
-export default function Signin() {
+export default function Admin() {
+  const auth = useAuthContext();
+  //Datos del usuario
+  const authUser = auth.authTokens;
   return (
-    <div className="justify-center ">
-      <h1>Ruta admin</h1>
+    <div className="flex flex-row col-2 ">
+      <div className="">
+        <AdminAccount />
+      </div>
+      <div className=" bg-white m-4 w-full justify-center">
+        <FormClient user={authUser} />
+      </div>
     </div>
   );
 }

@@ -1,12 +1,20 @@
-'use client'
-import { Typography } from "@material-tailwind/react";
+"use client";
+import AccountMax640 from "@/components/AccountMax640";
+import { useAuthContext } from "@/contexts/authContext";
+import FormClient from "@/components/FormClient";
 
 export default function Client() {
-    return (
-      <>
-      <Typography> client user dashboard </Typography>
-       
-      </>
-    );
-  }
-  
+  const auth = useAuthContext();
+  //Datos del usuario
+  const authUser = auth.authTokens;
+  return (
+    <div className="flex flex-row col-2 ">
+      <div className="">
+        <AccountMax640 />
+      </div>
+      <div className=" bg-white m-4 w-full justify-center">
+        <FormClient user={authUser} />
+      </div>
+    </div>
+  );
+}

@@ -25,8 +25,7 @@ export default function SingleCard({ name, price, img }) {
             className=" shadow-none hover:shadow-none hover:bg-pink hover:text-white focus:shadow-none focus:scale-105 active:scale-100 "
             fullWidth
             color="gray"
-            variant="outlined"
-           
+            variant="outlined"   
             
           >
             more about this 

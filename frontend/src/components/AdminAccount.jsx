@@ -1,6 +1,7 @@
 "use client";
 import React, { Fragment, useState } from "react";
 import { Accordion, AccordionHeader, AccordionBody, Card, List, ListItem, Typography } from "@material-tailwind/react";
+import Link from "next/link";
 
 function Icon({ id, open }) {
   return (
@@ -36,24 +37,22 @@ export default function AdminAccount() {
         <AccordionBody>
           <Card className="w-full">
             <List>
-              <ListItem className="hover:text-pink" selected={selected === 1} onClick={() => setSelectedItem(1)}>
-                Contact Information
-              </ListItem>
-              <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
-                Appointments
-              </ListItem>
-              <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
-                History Sales
-              </ListItem>
-              <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
-                Users
-              </ListItem>
-              <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
-                Services
-              </ListItem>
-              <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
-                Calendar
-              </ListItem>
+              <Link href="/admin">
+                <ListItem className="hover:text-pink" selected={selected === 1} onClick={() => setSelectedItem(1)}>
+                  Contact Information
+                </ListItem>
+              </Link>
+              <Link href="/admin/allappointments">
+                <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
+                  Appointments
+                </ListItem>
+              </Link>
+
+              <Link href="/admin/allservices">
+                <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
+                  Services
+                </ListItem>
+              </Link>
             </List>
           </Card>
         </AccordionBody>
@@ -64,24 +63,22 @@ export default function AdminAccount() {
             Account Admin
           </Typography>
           <List className="">
-            <ListItem className="hover:text-pink " selected={selected === 1} onClick={() => setSelectedItem(1)}>
-              Contact Information
-            </ListItem>
-            <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
-              Appointments
-            </ListItem>
-            <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
-              History Sales
-            </ListItem>
-            <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
-              Users
-            </ListItem>
-            <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
-              Services
-            </ListItem>
-            <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
-              Calendar
-            </ListItem>
+            <Link href="/admin">
+              <ListItem className="hover:text-pink " selected={selected === 1} onClick={() => setSelectedItem(1)}>
+                Contact Information
+              </ListItem>
+            </Link>
+            <Link href="/admin/allappointments">
+              <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
+                Appointments
+              </ListItem>
+            </Link>
+
+            <Link href="/admin/allservices">
+              <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
+                Services
+              </ListItem>
+            </Link>
           </List>
         </Card>
       </div>
