@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "server"
+version = "0.1.0"
+description = "django server"
+authors = ["MateoAlejandro0331 <mateo.alejandro0331@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.2.3"
+djangorestframework = "^3.14.0"
+django-cors-headers = "^4.2.0"
+django-allauth = "^0.54.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
