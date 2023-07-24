@@ -24,15 +24,15 @@ const values = [
 
 export default function Values() {
   return (
-    <Card className="flex-row w-full mb-10 w-1/2 ">
+    <Card className="flex-row w-full mb-10  justify-center">
       <CardBody className="p-8 flex flex-col justify-between">
         <Typography variant="h1" className=" flex justify-center text-[#000000]">
           The work values we thrive for
         </Typography>
         <Typography className=" flex flexflex-row p-8 justify-center uppercase mb-4 text-[#BA7894]">Ours values</Typography>
-        {values.map((value) => {
+        {values.map((value, index) => {
           return (
-            <Typography className=" flex flex-wrap m-2 p-2">
+            <Typography key={index} className=" flex flex-wrap m-2 p-2">
               <Image width={49} height={72} alt={value.name} src={value.href} />
               <div>
                 <Typography className="font-bold text-[#000000] ">{value.name}</Typography>

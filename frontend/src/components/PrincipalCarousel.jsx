@@ -22,6 +22,7 @@ export default function PrincipalCarousel() {
             height={500}
             alt="image 2"
             className="h-full w-full object-cover"
+            priority={true}
           />
           <div className="absolute inset-0 grid h-full w-full items-center">
             <div className="w-3/4 pl-12 md:w-2/4 md:pl-20 lg:pl-32">
@@ -54,6 +55,7 @@ export default function PrincipalCarousel() {
             height={500}
             alt="image 3"
             className="h-full w-full object-cover"
+            priority={true}
           />
           <div className="absolute inset-0 grid h-full w-full items-end">
             <div className="w-3/4 pl-12 pb-12 md:w-2/4 md:pl-20 md:pb-20 lg:pl-32 lg:pb-32">
