@@ -8,6 +8,9 @@ from .models import Appointment, TIMETABLE
 from rest_framework import status
 from .serializers import AppointmentSerializer
 from collections import Counter
+from user.serializers import UserSerializer
+from django.core.exceptions import ObjectDoesNotExist
+from django.views.decorators.csrf import csrf_exempt
 
 
 @api_view(["POST"])
@@ -67,23 +70,93 @@ def UserAppointments(request):
 def AvailableHours(request):
     """"""
     hours = {
-        "1": "08:00 to 08:30", "2": "08:30 to 09:00", "3": "09:00 to 09:30", "4": "09:30 to 10:00",
-        "5": "10:00 to 10:30", "6": "10:30 to 11:00", "7": "11:00 to 11:30", "8": "11:30 to 12:00",
-        "9": "12:00 to 12:30", "10": "12:30 to 01:00", "11": "01:00 to 01:30", "12": "01:30 to 02:00",
-        "13": "02:00 to 02:30", "14": "02:30 to 03:00", "15": "03:00 to 03:30", "16": "03:30 to 04:00",
-        "17": "04:00 to 04:30", "18": "04:30 to 05:00"
+        "1": "08:00 to 08:30",
+        "2": "08:30 to 09:00",
+        "3": "09:00 to 09:30",
+        "4": "09:30 to 10:00",
+        "5": "10:00 to 10:30",
+        "6": "10:30 to 11:00",
+        "7": "11:00 to 11:30",
+        "8": "11:30 to 12:00",
+        "9": "12:00 to 12:30",
+        "10": "12:30 to 01:00",
+        "11": "01:00 to 01:30",
+        "12": "01:30 to 02:00",
+        "13": "02:00 to 02:30",
+        "14": "02:30 to 03:00",
+        "15": "03:00 to 03:30",
+        "16": "03:30 to 04:00",
+        "17": "04:00 to 04:30",
+        "18": "04:30 to 05:00",
     }
 
-    service_id = request.query_params.get('service')
-    day = request.query_params.get('day')
+    service_id = request.query_params.get("service")
+    day = request.query_params.get("day")
 
     appointments = Appointment.objects.filter(day=day, service_id=service_id)
 
-    timetable_values = appointments.values_list('timetable', flat=True)
+    timetable_values = appointments.values_list("timetable", flat=True)
     timetable_list = list(timetable_values)
 
-    repeated_values = [value for value, count in Counter(timetable_list).items() if count > 1]
+    repeated_values = [
+        value for value, count in Counter(timetable_list).items() if count > 1
+    ]
     copy = hours.copy()
     for key in repeated_values:
         copy.pop(key, None)
     return Response(copy, status=201)
+
+
+"""@api_view(["PATCH"])
+def updateAppointmentStatus(request):
+    user = request.user
+    appointments = user.appointment_set.all()
+
+    appointment_id = request.data.get("id")
+    if not appointment_id:
+        return Response({"message": "Appointment ID is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        appointment = appointments.get(id=appointment_id)
+
+        if appointment.status == "Confirmed":
+            serializer = AppointmentSerializer(
+                appointment, data=request.data, partial=True, context={"request": request}
+            )
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        else:
+            return Response(
+                {"message": "Only appointments in 'Confirmed' state can be modified or cancelled."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+    except Appointment.DoesNotExist:
+        return Response(
+            {"message": "Appointment does not exist."},
+            status=status.HTTP_404_NOT_FOUND,
+        )
+"""
+
+@api_view(["PATCH"])
+@csrf_exempt
+def UpdateUserAppointment(request):
+    user_id = request.user.id  # Obtener el ID del usuario autenticado
+    appointment_id = request.data.get("id")
+
+    try:
+        appointment = Appointment.objects.get(id=appointment_id, user_id=user_id)
+        appointment.status = "CANCELED"
+        appointment.save()
+        return Response({"message": "Appointment canceled successfully"}, status=200)
+    except Appointment.DoesNotExist:
+        return Response(
+            {
+                "message": "Appointment does not exist or does not belong to the authenticated user"
+            },
+            status=404,
+        )
