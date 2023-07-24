@@ -7,5 +7,8 @@ urlpatterns = [
     path("list/", ListAppointments),
     path("user/", UserAppointments),
     path("hours/", AvailableHours),
-    path("updateappointment/",UpdateUserAppointment,),
+    path(
+        "updateappointment/",
+        UpdateUserAppointment,
+    ),
 ]

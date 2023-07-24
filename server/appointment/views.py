@@ -55,7 +55,7 @@ def ListAppointments(request):
 
 @api_view(["GET"])
 def UserAppointments(request):
-    """Receieved the request as query parameters
+    """Received the request as query parameters
     to return a list of appointments by user"""
     user_id = request.query_params.get("id")
     try:
@@ -107,45 +107,10 @@ def AvailableHours(request):
     return Response(copy, status=201)
 
 
-"""@api_view(["PATCH"])
-def updateAppointmentStatus(request):
-    user = request.user
-    appointments = user.appointment_set.all()
-
-    appointment_id = request.data.get("id")
-    if not appointment_id:
-        return Response({"message": "Appointment ID is required."}, status=status.HTTP_400_BAD_REQUEST)
-
-    try:
-        appointment = appointments.get(id=appointment_id)
-
-        if appointment.status == "Confirmed":
-            serializer = AppointmentSerializer(
-                appointment, data=request.data, partial=True, context={"request": request}
-            )
-            if serializer.is_valid():
-                serializer.save()
-                return Response(serializer.data)
-            else:
-                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-        else:
-            return Response(
-                {"message": "Only appointments in 'Confirmed' state can be modified or cancelled."},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
-    except Appointment.DoesNotExist:
-        return Response(
-            {"message": "Appointment does not exist."},
-            status=status.HTTP_404_NOT_FOUND,
-        )
-"""
-
 @api_view(["PATCH"])
 def UpdateUserAppointment(request):
-    user_id = request.data.get("user_id") # Obtener el ID del usuario autenticado
-    appointment_id = request.data.get("appoinment_id")
+    user_id = request.data.get("user_id")  # Obtener el ID del usuario autenticado
+    appointment_id = request.data.get("appointment_id")
     status = request.data.get("status")
 
     try:
@@ -153,7 +118,12 @@ def UpdateUserAppointment(request):
         print(appointment)
         appointment.status = status
         appointment.save()
-        return Response({"message": f"Appointment for {appointment.service} service was successfully {status}"}, status=200)
+        return Response(
+            {
+                "message": f"Appointment for {appointment.service} service was successfully {status}"
+            },
+            status=200,
+        )
     except Appointment.DoesNotExist:
         return Response(
             {
