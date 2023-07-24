@@ -1,8 +1,13 @@
+"use client";
 import { Typography } from "@material-tailwind/react";
+import Link from "next/link";
 import SingleCard from "./SigleCard";
+import { GetService, fetchservices } from "@/stateComponents/ProbarServicios";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 
 //info temporal de los servicios
-const services = [
+const serv = [
   {
     name: "Haircut",
     href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/3_btnysw.png",
@@ -43,26 +48,68 @@ const services = [
     href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/4_ktb8yv.webp",
     price: 100,
   },
+  {
+    name: "Microblandin",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/4_ktb8yv.webp",
+    price: 100,
+  },
+  {
+    name: "Microblandin",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/4_ktb8yv.webp",
+    price: 100,
+  },
 ];
 
-export default function CardsServices() {
+export default function CardsServices({ page }) {
+  // prop que dice en que pagina esta para renderizado condicional = "services"
+  //Cuandoe esta en la pagina principal se renderizan 8 cards slice(0, 8) y el link ALL SERVICES
+  // Cuando esta en la pagina services se renderizan todos los servicios y se desaparece ALL SERVICES
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await GetService();
+      setServices(data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div>
+
       <div className="flex flexflex-row p-3 min-[320px]: flex-wrap">
-        {/* Corta los primero 8 servicios que vengan del endpoint */}
-        {services.slice(0, 8).map((service) => {
-          return (
-            //container dividido en 8 servicios
-            <SingleCard name={service.name} img={service.href} price={service.price} />
-          );
-        })}
+        {page == "services"
+          ? services.map((service, index) => {
+              return (
+                //Se renderizan todos los servicios
+
+
+                <SingleCard key={index} name={service.name} img={service.image} price={service.price} />
+
+              );
+            })
+          : services.slice(0, 8).map((service, index) => {
+              return (
+                //Se renderizan 8
+
+
+                <SingleCard key={index} name={service.name} img={service.image} price={service.price} />
+
+              );
+            })}
+
       </div>
-      <div className="flex flexflex-row p-8 justify-center">
-        <Typography className=" font-manrope text-pink font-bold  hover:text-black">
-          {/* link a la pagina Servicios */}
-          <a href="">ALL SERVICES </a>
-        </Typography>
-      </div>
+      {/* Renderizado condicional para agregar o quitar la palabra ALL SERVICES */}
+      {page == "services" ? (
+        <div></div>
+      ) : (
+        <div className="flex flexflex-row p-8 justify-center">
+          <Link href="/services">
+            <Typography className=" font-manrope text-pink font-bold  hover:text-black">ALL SERVICES</Typography>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
