@@ -4,21 +4,13 @@ import { Card, CardHeader, CardBody, Typography, Button, Input } from "@material
 import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-
-{
-  /* Infomación del servicio, se renderiza abajo*/
-}
-const service = {
-  name: "Manicura",
-  img: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689039610/manicure-spa-pedicure-salon-florestilista_1_qyhw51.png",
-  description:
-    "A gel moisturizer packed with glow-boosting Cherry Blossom Extracts, visibly brightening niacinamide, and hydrating betaine from sugar beets. Advanced with glycerin and Cherry Blossom flavanoids with visibly soothing and moisturizing benefits for skin that’s ready for makeup! Dermatologist tested.",
-  price: 200,
-};
+import Image from "next/image";
 
 const times = ["9:30", "10:30", "12:30", "2:00"];
 
-export default function OneService() {
+export default function OneService({ service }) {
+  const { image, name, price, description } = service;
+
   const [book, setBook] = useState("false");
   console.log(book, "soy book");
 
@@ -40,19 +32,20 @@ export default function OneService() {
     <Card className="flex flex-row h-full ">
       <CardHeader shadow={false} floated={false} className="w-3/6 scale-75 shrink-0 m-0 rounded-r-none">
         {/* Link de imagen del servicio*/}
-        <img src={service.img} alt={service.name} className="w-full h-full object-cover" />
+        <Image src={image} alt={name} width={900}
+              height={200} className=" object-cover" />
       </CardHeader>
       <CardBody className="flex flex-col place-content-center">
         {/* Nombre del servicio*/}
         <Typography variant="h4" className=" font-playfair mb-1">
-          {service.name}
+          {name}
         </Typography>
 
         {/* Precio del servicio */}
-        <Typography className="font-poppins">$ {service.price}</Typography>
+        <Typography className="font-poppins">$ {price}</Typography>
         <p color="gray" className=" font-manrope mb-4">
           {/* Descripcion del servicio */}
-          {service.description}
+          {description}
         </p>
 
         {book == "true" ? (
@@ -64,31 +57,31 @@ export default function OneService() {
               <Calendar onChange={onChange} value={date} />
               <div className="p-4 ">
                 <Typography variant="h5" className="font-playfair ">
-                  Appointment  :
+                  Appointment :
                 </Typography>
                 <Typography className="font-manrope font-bold py-4 text-[#944c82]">
                   Day: {date} / Hour: {hour}
                 </Typography>
               </div>
-              </div>
-              <div>
+            </div>
+            <div>
               <div className="py-8 flex flex-row flex-wrap ">
                 <Typography className="font-playfair">Select Hour :</Typography>
                 {times.map((time, index) => {
                   return (
                     //Se renderizan todas las horas
                     <div className="p-1">
-                    <Button
-                      key={index}
-                      className=" shadow-none hover:shadow-none hover:bg-pink hover:text-white p-2 focus:shadow-none focus:scale-105 active:scale-100 "
-                      color="gray"
-                      variant="outlined"
-                      value={time}
-                      name="hour"
-                      onClick={handleClick}
-                    >
-                      {time}
-                    </Button>
+                      <Button
+                        key={index}
+                        className=" shadow-none hover:shadow-none hover:bg-pink hover:text-white p-2 focus:shadow-none focus:scale-105 active:scale-100 "
+                        color="gray"
+                        variant="outlined"
+                        value={time}
+                        name="hour"
+                        onClick={handleClick}
+                      >
+                        {time}
+                      </Button>
                     </div>
                   );
                 })}
@@ -113,9 +106,10 @@ export default function OneService() {
                 onClick={() => {
                   alert("Appoinment Confirmed"), setBook("false"), setDate(new Date().toDateString(), setHour(""));
                 }}
-              >BOOK NOW</Button>
-              </div>
-            
+              >
+                BOOK NOW
+              </Button>
+            </div>
           </div>
         ) : (
           <div>

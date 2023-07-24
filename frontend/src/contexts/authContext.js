@@ -1,6 +1,6 @@
 "use client";
 
-import { React, createContext, useCallback, useContext, useMemo, useState } from "react";
+import { React, useEffect, createContext, useCallback, useContext, useMemo, useState } from "react";
 
 const AuthContext = createContext({
   login: (authTokens) => {},
@@ -12,7 +12,7 @@ const AuthContext = createContext({
 const AUTH_TOKENS_KEY = "NEXT_JS_AUTH";
 
 export default function AuthContextProvider({ children }) {
-  const authTokensInLocalStorage = window.localStorage.getItem(AUTH_TOKENS_KEY);
+  const authTokensInLocalStorage = typeof window !== "undefined" ? window.localStorage.getItem(AUTH_TOKENS_KEY) : null;
   const [authTokens, setAuthTokens] = useState(authTokensInLocalStorage === null ? null : JSON.parse(authTokensInLocalStorage));
 
   const login = useCallback(function (authTokens) {
