@@ -1,3 +1,6 @@
+
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,6 +9,7 @@ const NavLinks = [
   { text: "About us", href: "/about" },
   { text: "Contact", href: "/contact" },
   { text: "Services", href: "/services" },
+  { text: "AddServices", href: "/addService" },
 ];
 
 export default function Navbar() {

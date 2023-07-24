@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('appointment', '0002_remove_appointment_availability_and_more'),
+        ("appointment", "0002_remove_appointment_availability_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='appointment',
-            name='day',
-            field=models.DateField(help_text='Dia de la cita', verbose_name='Day'),
+            model_name="appointment",
+            name="day",
+            field=models.DateField(help_text="Dia de la cita", verbose_name="Day"),
         ),
     ]

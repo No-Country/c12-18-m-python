@@ -6,22 +6,31 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('services', '0001_initial'),
-        ('appointment', '0003_alter_appointment_day'),
+        ("services", "0001_initial"),
+        ("appointment", "0003_alter_appointment_day"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='appointment',
-            name='service',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='services.service'),
+            model_name="appointment",
+            name="service",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="services.service",
+            ),
         ),
         migrations.AlterField(
-            model_name='appointment',
-            name='user',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            model_name="appointment",
+            name="user",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
     ]
