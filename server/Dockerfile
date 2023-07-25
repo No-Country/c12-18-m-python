@@ -1,22 +1,29 @@
 # Usa una imagen base de Alpine
 FROM python:3.8-alpine
 
+ENV PYTHONUNBUFFERED=1
+
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
 # Copia los archivos de requerimientos
 COPY requirements.txt .
 
-# Instala las dependencias necesarias
-RUN apk update && apk add --no-cache --virtual .build-deps build-base postgresql-dev libffi-dev \
-    && pip install --no-cache-dir --verbose -r requirements.txt \
-    && apk del .build-deps
+#instalar y actualizar paquetes
+RUN apk update \
+    && apk add --no-cache gcc musl-dev python3-dev libffi-dev \
+    && pip install --upgrade pip
 
-# Copia los archivos de tu aplicación Django al contenedor
-COPY . .
+#Copiar los archivos del proyecto
+COPY ./requirements.txt ./
 
-# Expone el puerto en el que se ejecuta tu aplicación Django
-EXPOSE 8000
+RUN pip install -r requirements.txt
 
-# Define el comando para iniciar tu aplicación Django
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+COPY ./ ./
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000" ]
+
+
+
+
+
