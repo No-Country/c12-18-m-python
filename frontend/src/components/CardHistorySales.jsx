@@ -4,9 +4,9 @@ import { Card, CardHeader, CardBody, Typography } from "@material-tailwind/react
 
 // Componente CardHistorySales
 // Este es el componente principal que muestra la tarjeta de ventas del historial.
-export default function CardAppointments() {
+export default function CardHistorySales() {
   return (
-    <Card className="grid m-4 mx-6 sm:flex flex-row md:h-56 sm:m-2 lg:p-2 sm:h-full">
+    <Card className="grid m-4 mx-6 sm:flex flex-row sm:h-48 md:h-56 sm:m-2 lg:p-3">
       {/* Encabezado de la tarjeta */}
       <CardHeader
         shadow={false}
@@ -32,18 +32,15 @@ export default function CardAppointments() {
               <span className="text-black text-base sm:flex justify-end sm:w-32">(Hour)</span>
             </div>
           </div>
-          <div>
-            <span className="uppercase text-blue-500 font-bold">(service)</span>
-          </div>
           {/* Sección con detalles del usuario */}
           <div className="lg:grid sm:-mb-4">
             <div className="m-0 p-0 mb-2">
               {/* Nombre del usuario */}
-              <Typography className="mb-0">
-                <span className="font-bold">(Name)</span>
+              <Typography variant="h5" color="blue-gray" className="mb-0">
+                (Name)
               </Typography>
               {/* Correo electrónico del usuario */}
-              <Typography className="font-normal sm:text-base">
+              <Typography color="gray" className="font-normal sm:text-lg">
                 (Email)
               </Typography>
             </div>

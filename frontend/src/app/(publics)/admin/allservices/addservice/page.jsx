@@ -3,7 +3,7 @@
 import ExampleForm from "@/components/FormAddServices";
 import FormAddServices from "@/components/FormAddServices";
 
-export default function About() {
+export default function Addservice() {
   return (
     <div>
       <FormAddServices />

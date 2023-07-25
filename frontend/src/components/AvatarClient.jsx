@@ -41,7 +41,7 @@ export default function Example() {
           <div className="hidden md:block border-3">
             {/*Avatar*/}
             <div className="flex items-center gap-4 border-solid border-black border-2 px-5">
-              <Avatar className="m-1" src="/img/face-2.jpg" alt="avatar" />
+              <Avatar className="m-1" src="https://img.freepik.com/foto-gratis/chica-sonriente-posando-perfil_23-2147639421.jpg?w=2000" alt="avatar" />
               <div>
                 <Typography variant="h6" color="black" className="mr-1">
                   Tania Andrew
