@@ -1,19 +1,17 @@
 import { Card, Input, Button, Typography } from "@material-tailwind/react";
-
 import { useState } from "react";
+import { useAuthContext } from "@/contexts/authContext";
+
+import { useRouter } from "next/navigation";
 
 export default function Login() {
-  const [email, setemail] = useState("");
-  const [first_name, setfirst_name] = useState("");
-  const [password, setpassword] = useState("");
-  const [username, setusername] = useState("");
-
+  const router = useRouter();
+  const { login } = useAuthContext();
   const [form, setForm] = useState({
-    email: "",
-    first_name: "",
     password: "",
     username: "",
   });
+
   function onChange(event) {
     const property = event.target.name;
     const value = event.target.value;
@@ -23,61 +21,50 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(JSON.stringify({ username, first_name, email, password }));
-
+    console.log(JSON.stringify(form));
     try {
-      const response = await fetch("http://127.0.0.1:8000/user/createuser/", {
-        method: "POST",
+      const response = await fetch(`http://127.0.0.1:8000/user/auth/?username=${form.username}&&password=${form.password}`, {
+        method: "GET",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "form-data",
         },
-        body: JSON.stringify({ username, first_name, email, password }),
       });
 
-      if (response.ok) {
-        alert("El usuario se creó exitosamente");
-      } else {
-        console.log("algo no estubo bien", error);
+      if (!response.ok) {
+        alert(" tu usuario o contraseña estan mal");
+        return console.log("Error");
+      }
+
+      const tokens = await response.json();
+      login(tokens);
+      setForm({ password: "", username: "" });
+      console.log(tokens);
+      alert("Usuario logueado con exito");
+      if (tokens.admin === true) {
+        alert("Eres administrador");
+        return router.push("/admin");
+      }
+      if (tokens.admin === false) {
+        alert("Eres cliente");
+        return router.push("/");
       }
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
-
-    setemail("");
-    setfirst_name("");
-    setpassword("");
-    setusername("");
   };
-
-
   return (
     <div className=" justify-center flex flex-row flex-wrap divide-x divide-gray-400">
-      {/* registro */}
       <Card color="transparent" shadow={false} className="p-8 items-center">
         <Typography variant="h4" color="blue-gray" className="font-playfair">
-          Register
+          Sign In
         </Typography>
         <Typography color="gray" className="mt-1 font-manrope">
-          Are you new in Vanity Reserve?
+          Enter your details to start
         </Typography>
-        <Typography color="gray" className="mt-1 font-manrope">
-          Enter your details to register.
-        </Typography>
-        <form onSubmit={handleSubmit} className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
+        <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" onSubmit={handleSubmit}>
           <div className="mb-4 flex flex-col gap-6">
-
-            <Input size="lg" label="Name" id="first_name" value={first_name} onChange={(e) => setfirst_name(e.target.value)} />
-            <Input size="lg" label="Username" id="username" value={username} onChange={(e) => setusername(e.target.value)} />
-            <Input size="lg" label="Email" id="email" value={email} onChange={(e) => setemail(e.target.value)} />
-            <Input
-              type="password"
-              size="lg"
-              label="Password"
-              id="password"
-              value={password}
-              onChange={(e) => setpassword(e.target.value)}
-            />
-
+            <Input size="lg" label="Username" name="username" value={form.username} onChange={onChange} />
+            <Input type="password" size="lg" label="Password" name="password" value={form.password} onChange={onChange} />
           </div>
 
           <Button
@@ -86,31 +73,6 @@ export default function Login() {
             color="gray"
             variant="outlined"
             type="submit"
-          >
-            Register
-          </Button>
-        </form>
-      </Card>
-      {/* iniciar sesión  */}
-
-      <Card color="transparent" shadow={false} className="p-8 items-center">
-        <Typography variant="h4" color="blue-gray" className="font-playfair">
-          Sign In
-        </Typography>
-        <Typography color="gray" className="mt-1 font-manrope">
-          Enter your details to start
-        </Typography>
-        <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
-          <div className="mb-4 flex flex-col gap-6">
-            <Input size="lg" label="Email" />
-            <Input type="password" size="lg" label="Password" />
-          </div>
-
-          <Button
-            className=" bg-pink shadow-none hover:shadow-none text-white  focus:shadow-none focus:scale-105 active:scale-100 "
-            fullWidth
-            color="gray"
-            variant="outlined"
           >
             Sign In
           </Button>

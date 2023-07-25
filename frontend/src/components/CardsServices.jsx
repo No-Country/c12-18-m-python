@@ -58,6 +58,51 @@ const serv = [
     href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/4_ktb8yv.webp",
     price: 100,
   },
+  {
+    name: "Haircut",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/3_btnysw.png",
+    price: 200,
+  },
+  {
+    name: "Body Massage",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/8_dha6se.jpg",
+    price: 300,
+  },
+  {
+    name: "Hairstyle",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/2_ilflki.png",
+    price: 300,
+  },
+  {
+    name: "Haircut",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/3_btnysw.png",
+    price: 200,
+  },
+  {
+    name: "Body Massage",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/8_dha6se.jpg",
+    price: 300,
+  },
+  {
+    name: "Hairstyle",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/2_ilflki.png",
+    price: 300,
+  },
+  {
+    name: "Haircut",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/3_btnysw.png",
+    price: 200,
+  },
+  {
+    name: "Body Massage",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/8_dha6se.jpg",
+    price: 300,
+  },
+  {
+    name: "Hairstyle",
+    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/2_ilflki.png",
+    price: 300,
+  },
 ];
 
 export default function CardsServices({ page }) {
@@ -85,7 +130,7 @@ export default function CardsServices({ page }) {
                 //Se renderizan todos los servicios
 
 
-                <SingleCard key={index} name={service.name} img={service.image} price={service.price} />
+                <SingleCard key={index} service={service} />
 
               );
             })
@@ -94,7 +139,7 @@ export default function CardsServices({ page }) {
                 //Se renderizan 8
 
 
-                <SingleCard key={index} name={service.name} img={service.image} price={service.price} />
+                <SingleCard key={index} service={service} />
 
               );
             })}
