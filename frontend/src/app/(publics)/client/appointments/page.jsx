@@ -1,5 +1,7 @@
 'use client'
 import AccountMax640 from "@/components/AccountMax640";
+import CardAppointments from "@/components/CardAppointments";
+import CardClient from "@/components/CardClient";
 
 
 export default function Appoinments() {
@@ -10,7 +12,10 @@ export default function Appoinments() {
         <AccountMax640 />
       </div>
       <div className=" bg-white m-4 w-full justify-center">
-        <h3>insertar componente de appointments cliente </h3>
+        <CardClient/>
+        <CardClient/>
+        <CardClient/>
+        <CardClient/>
       </div>
     </div>
        
