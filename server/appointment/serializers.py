@@ -5,13 +5,10 @@ from user.serializers import UserSerializer
 
 
 class AppointmentSerializer(serializers.ModelSerializer):
-
     service = ServiceSerializer(required=False)
     user = UserSerializer(required=False)
-    time = serializers.CharField(source='get_timetable_display', read_only=True)
-
+    time = serializers.CharField(source="get_timetable_display", read_only=True)
 
     class Meta:
         model = Appointment
-        fields = '__all__'
-
+        fields = "__all__"
