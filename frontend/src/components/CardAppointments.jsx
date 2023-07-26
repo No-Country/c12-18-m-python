@@ -13,7 +13,7 @@ export default function CardAppointments({ appointment }) {
         <img
           src="https://acortar.link/ktZC37"
           alt="image"
-          className="w-auto h-full object-contain sm:mb-0 sm:p-3 sm:rounded-r-none"
+          className="w-auto border-2 border-indigo-950 h-full object-contain sm:p-3 rounded-md"
         />
       </CardHeader>
       <div className="flex flex-col m-0 sm:w-full sm:h-full sm:mb-0">

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import CardAppointments from "@/components/CardAppointments";
 import AdminAccount from "@/components/AdminAccount";
 import { useState, useEffect } from "react";
@@ -11,7 +11,7 @@ export default function Appointments() {
       try {
         const response = await fetch(
           "http://127.0.0.1:8000/appointment/list/",
-    
+
           {
             method: "GET",
             headers: {
@@ -38,14 +38,17 @@ export default function Appointments() {
       <div className="">
         <AdminAccount />
       </div>
-      
-      <div className=" bg-white m-4 w-full justify-center">
-      <h2 className="text-red-700">appointments</h2>
-        {
-          appointments.map( appointment => 
+
+      <div className=" bg-white m-4 w-full">
+        <div className="sm:w-1/3">
+          <h2 className="text-black text-lg mt-4 font-bold sm:flex justify-center">Appointments</h2>
+        </div>
+
+        <div>
+          {appointments.map((appointment) => (
             <CardAppointments appointment={appointment} />
-          )
-        }
+          ))}
+        </div>
       </div>
     </div>
   );
