@@ -24,14 +24,7 @@ export default function Service() {
     fetchData();
   }, []);
   console.log(service, id, "soy services")
-  
 
- 
-
-
-
-
-  
   return (
     <>
       <Bannerup />
