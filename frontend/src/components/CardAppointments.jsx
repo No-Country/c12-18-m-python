@@ -1,60 +1,73 @@
 "use client";
+// Importaciones necesarias de material tailwind
 import { Card, CardHeader, CardBody, Typography } from "@material-tailwind/react";
-import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 
+// Componente CardHistorySales
+// Este es el componente principal que muestra la tarjeta de ventas del historial.
 export default function CardAppointments() {
   return (
-    <Card
-      className="grid w-90 m-4
-    md:flex flex-row lg:h-80 lg:p-3"
-    >
-      <CardHeader shadow={false} floated={false} className="w-full m-0 rounded-r-none">
+    <Card className="grid m-4 mx-6 sm:flex flex-row md:h-56 sm:m-2 lg:p-2 sm:h-full">
+      {/* Encabezado de la tarjeta */}
+      <CardHeader
+        shadow={false}
+        floated={false}
+        className="m-0 rounded-r-none sm:w-96 sm:h-full sm:mb-0"
+      >
+        {/* Imagen del encabezado */}
         <img
           src="https://acortar.link/ktZC37"
           alt="image"
-          className="w-full h-full object-contain
-         md:w-full md:p-4 shrink-0 m-0 rounded-r-none
-        lg:h-full lg:m-3 lg:w-90 "
+          className="w-auto h-full object-contain sm:mb-0 sm:p-3 sm:rounded-r-none"
         />
       </CardHeader>
-      <div
-        className="flex flex-col m-0
-      md:w-full"
-      >
-        <CardBody className="md:mt-0">
-          <div
-            className="flex justify-end space-x-14 md:mb-8
-          md:space-x-32 lg:text-2xl"
-          >
-            <span className="flex">(date)</span>
-            <span>(hour)</span>
-          </div>
-          <div className="lg:grid">
-            <Typography variant="h6" color="blue" className="uppercase mt-4 lg:text-2xl lg:mb-2">
-              (Service)
-            </Typography>
-            <div className="flex mb-7 md:space-x-8 space-x-6 md:text-xl">
-              <span className="">(state)</span>
-              <div>
-                <span>Appointment id:</span>
-                <span className="">(Number)</span>
-              </div>
+      <div className="flex flex-col m-0 sm:w-full sm:h-full sm:mb-0">
+        {/* Cuerpo de la tarjeta */}
+        <CardBody className="sm:mt-0 sm:h-1/2">
+          {/* Sección con fecha y hora */}
+          <div className="flex justify-between sm:justify-end w-full md:w-full h-8 md:mr-4">
+            <div>
+              <span className="text-black text-base sm:flex justify-end w-20">(Date)</span>
             </div>
-            <div className="m-0 p-0">
-              <Typography variant="h5" color="blue-gray" className="mb-1">
-                (Name)
+            <div>
+              <span className="text-black text-base sm:flex justify-end sm:w-32">(Hour)</span>
+            </div>
+          </div>
+          <div>
+            <span className="uppercase text-blue-500 font-bold">(service)</span>
+          </div>
+          {/* Sección con detalles del usuario */}
+          <div className="lg:grid sm:-mb-4">
+            <div className="m-0 p-0 mb-2">
+              {/* Nombre del usuario */}
+              <Typography className="mb-0">
+                <span className="font-bold">(Name)</span>
               </Typography>
-              <Typography color="gray" className="font-normal md:text-lg">
+              {/* Correo electrónico del usuario */}
+              <Typography className="font-normal sm:text-base">
                 (Email)
               </Typography>
             </div>
-          </div>
-          <div
-            className="flex justify-end space-x-16
-          md:space-x-32"
-          >
-            <span className="font-bold lg:text-2xl">Total:</span>
-            <span className="lg:text-2xl">$(total)</span>
+            <div className="flex justify-between w-72 mb-2 sm:w-80 md:space-x-8 space-x-6 md:text-xl">
+              {/* Estado del pedido */}
+              <span className="w-28">(cancelled)</span>
+              {/* ID de usuario */}
+              <div className="w-72 mb-2">
+                <span>User id:</span>
+                <span className="">(Number)</span>
+              </div>
+            </div>
+            {/* Sección con el total de ventas */}
+            <div className="flex justify-between mb-0 p-0 sm:justify-end w-full md:w-full h-8 md:mr-4">
+              <div>
+                <span className="text-black text-base font-bold flex justify-end w-48 sm:w-20">
+                  Total:$
+                </span>
+              </div>
+              {/* Total de ventas */}
+              <div>
+                <span className="text-black text-base sm:flex justify-end sm:w-32">(total)</span>
+              </div>
+            </div>
           </div>
         </CardBody>
       </div>

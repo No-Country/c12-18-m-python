@@ -9,6 +9,7 @@ import {
   ListItem, 
   Typography 
 } from "@material-tailwind/react";
+import Link from "next/link";
 
  
 function Icon({ id, open }) {
@@ -48,12 +49,16 @@ export default function AccountMax640() {
         <AccordionBody>
           <Card className="w-full">
             <List>
+              <Link href="/client">
               <ListItem className="hover:text-pink   p-0 m-0" selected={selected === 1} onClick={() => setSelectedItem(1)}>
                 Contact Information
               </ListItem>
+              </Link>
+              <Link href="/client/appointments">
               <ListItem className="hover:text-pink p-0 m-0" selected={selected === 2} onClick={() => setSelectedItem(2)}>
                 Appointments
               </ListItem>
+              </Link>
             </List>
           </Card>
         </AccordionBody>
@@ -64,12 +69,16 @@ export default function AccountMax640() {
           Account
         </Typography>
           <List className="" >
+          <Link href="/client">
             <ListItem className="hover:text-pink " selected={selected === 1} onClick={() => setSelectedItem(1)}>
               Contact Information
             </ListItem>
+            </Link>
+            <Link href="/client/appointments">
             <ListItem className="hover:text-pink" selected={selected === 2} onClick={() => setSelectedItem(2)}>
               Appointments
             </ListItem>
+            </Link>
           </List>
         </Card>
       </div>

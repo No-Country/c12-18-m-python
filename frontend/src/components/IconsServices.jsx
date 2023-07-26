@@ -19,9 +19,8 @@ export default function IconsServices() {
         return (
           //container dividido en 6 imagenes de 6 servicios
           <div key={index} className=" basis-1/6 flex flex-col hover:scale-105 ">
-
             <div className="flex justify-center md:max-w-2xl">
-              <Image width={70} height={58} alt={icon.name} src={icon.href} />
+              <Image width="0" height="0" sizes="100vw" className="w-2/6 h-auto" alt={icon.name} src={icon.href} />
             </div>
             <div className=" flex justify-center p-8 font-manrope font-bold content-center text-sm/[18px] text-purple">
               {icon.name}

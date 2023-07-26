@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  django:
+    build: .
+    ports:
+      -8000:8000
+    valumes:
+      -.:/app
+    depens_on:
+      # -postgres
+
+  # postgres:
+  #   images: postgres:14.3-alpine.3.16
+  #   ports:
+  #     -5431:5432
+  #   volumes:
+  #     -./database/var/lib/postgresql/data
+  #   environmant:
+  #     -POSTGRES_USER=postgres
+  #     -POSTGRES_PASSWORD=postgres
+  #     -POSTGRES_DB=postgres
+
+    
+    
+

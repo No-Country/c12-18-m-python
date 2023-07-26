@@ -3,6 +3,7 @@ import { Card, Input, Button, Typography, Textarea } from "@material-tailwind/re
 import Image from "next/image";
 
 const FormAddServices = () => {
+  const defaultImg = 'https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/8_dha6se.jpg'
   const [image, setimage] = useState("");
   const [name, setname] = useState("");
   const [price, setPrice] = useState("");
@@ -61,7 +62,7 @@ const FormAddServices = () => {
           width={700}
           height={250}
           alt={"masaje"}
-          src={"https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/8_dha6se.jpg"}
+          src={form.image ? form.image : defaultImg}
         />
         <form onSubmit={handleSubmit} className="m-4  w-full ">
           <div className="mb-4 flex flex-col w-full ">
