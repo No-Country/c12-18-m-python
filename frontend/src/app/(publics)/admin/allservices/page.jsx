@@ -8,7 +8,8 @@ import { useState, useEffect } from "react";
 
 export default function Allservices() {
 
-  const [service, setService] = useState([]); 
+  const [service, setService] = useState([]);
+  const [deleteService, setDeleteService] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +19,8 @@ export default function Allservices() {
     };
 
     fetchData();
-  }, []);
+    setDeleteService(false);
+  }, [deleteService]);
 
 
   return (
@@ -34,7 +36,7 @@ export default function Allservices() {
           <div className="mb-0">
             {
               service.map(service => 
-                <CardAdminServices service={service}/>
+                <CardAdminServices service={service} setDeleteService={setDeleteService}/>
               ) 
             }
           </div>
