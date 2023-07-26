@@ -29,6 +29,7 @@ ALLOWED_HOSTS = [
     '54f3-191-111-232-2.ngrok-free.app',
     '127.0.0.1',
     'localhost',
+    '52.12.205.144'
 ]
 
 
