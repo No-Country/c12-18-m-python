@@ -1,5 +1,7 @@
-# Configuración de la imagen para el frontend Next.js
-FROM node:16
+
+# Usamos una imagen de Node.js para construir la aplicación React
+FROM node:14 as build
+
 
 # Establecemos el directorio de trabajo
 WORKDIR /app
@@ -8,7 +10,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . ./
-RUN npm run dev
+RUN npm run build
 
 # Utilizamos una imagen ligera de nginx para el despliegue
 FROM nginx:alpine
