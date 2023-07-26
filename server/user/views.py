@@ -24,6 +24,7 @@ def GetUsers(request):
     user_id = request.query_params.get("id")
     if user_id:
         data = User.objects.filter(id=user_id)
+
     serializer = UserSerializer(data, context={"request": request}, many=True)
     return Response(serializer.data)
 
@@ -62,5 +63,3 @@ def UpdateUser(request):
         return Response(serializer.data)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
