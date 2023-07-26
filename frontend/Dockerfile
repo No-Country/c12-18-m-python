@@ -1,5 +1,5 @@
 # Configuración de la imagen para el frontend Next.js
-FROM node:16
+FROM node:14
 
 # Establecemos el directorio de trabajo
 WORKDIR /app
