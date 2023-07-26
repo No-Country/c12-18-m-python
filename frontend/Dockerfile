@@ -2,7 +2,6 @@
 # Usamos una imagen de Node.js para construir la aplicación React
 FROM node:14 as build
 
-
 # Establecemos el directorio de trabajo
 WORKDIR /app
 
@@ -10,7 +9,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . ./
-RUN npm run build
+RUN npm run dev
 
 # Utilizamos una imagen ligera de nginx para el despliegue
 FROM nginx:alpine
@@ -23,3 +22,4 @@ EXPOSE 80
 
 # Comando para ejecutar el servidor nginx
 CMD ["nginx", "-g", "daemon off;"]
+
