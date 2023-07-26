@@ -7,7 +7,7 @@ services:
     networks:
       - frontend_network
 
-  backend:
+  server:
     image: 236649525998.dkr.ecr.us-west-2.amazonaws.com/backend
     ports:
       - "8000:8000"
