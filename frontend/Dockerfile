@@ -6,7 +6,7 @@ RUN mkdir /frontend
 WORKDIR /frontend
 
 # Copia el código fuente del frontend a la imagen de Docker
-COPY frontend/ /frontend/
+COPY . /frontend/
 
 # Instala las dependencias del frontend
 RUN npm install
