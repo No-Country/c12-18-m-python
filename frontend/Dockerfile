@@ -1,25 +1,23 @@
+# Establece la imagen base, que generalmente es una versión de Node.js con LTS (Long Term Support)
+FROM node:lts-alpine
 
-# Usamos una imagen de Node.js para construir la aplicación React
-FROM node:14 as build
-
-# Establecemos el directorio de trabajo
+# Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Copiamos los archivos necesarios y ejecutamos la construcción de la aplicación
-COPY package.json package-lock.json ./
-RUN npm install
-COPY . ./
-RUN npm run dev
+# Copia el archivo package.json y package-lock.json (o yarn.lock) a la imagen
+COPY package*.json ./
 
-# Utilizamos una imagen ligera de nginx para el despliegue
-FROM nginx:alpine
+# Instala las dependencias de la aplicación
+RUN npm install --production
 
-# Copiamos los archivos construidos de la aplicación React a la carpeta de nginx
-COPY --from=build /app/build /usr/share/nginx/html
+# Copia todos los archivos de la aplicación al contenedor
+COPY . /frontend/
 
-# Exponemos el puerto 80
-EXPOSE 80
+# Compila la aplicación de Next.js para producción (esto puede variar dependiendo de cómo hayas configurado tu proyecto)
+RUN npm run build
 
-# Comando para ejecutar el servidor nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Expone el puerto en el que se ejecutará la aplicación en el contenedor
+EXPOSE 3000
 
+# Define el comando para iniciar la aplicación cuando el contenedor se inicie
+CMD ["npm", "run", "dev"]
