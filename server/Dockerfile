@@ -1,29 +1,18 @@
-# Usa una imagen base de Alpine
-FROM python:3.8-alpine
+# Usamos una imagen de Python para el backend
+FROM python:3.9
 
-ENV PYTHONUNBUFFERED=1
-
-# Establece el directorio de trabajo dentro del contenedor
+# Establecemos el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos de requerimientos
-COPY requirements.txt .
+# Copiamos los archivos necesarios y ejecutamos la instalación de dependencias
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-#instalar y actualizar paquetes
-RUN apk update \
-    && apk add --no-cache gcc musl-dev python3-dev libffi-dev \
-    && pip install --upgrade pip
+# Copiamos el resto de los archivos del backend
+COPY . .
 
-#Copiar los archivos del proyecto
-COPY ./requirements.txt ./
+# Exponemos el puerto 8000 (puerto predeterminado de Django)
+EXPOSE 8000
 
-RUN pip install -r requirements.txt
-
-COPY ./ ./
-
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000" ]
-
-
-
-
-
+# Comando para ejecutar el servidor Django
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
