@@ -8,13 +8,10 @@ WORKDIR /app
 COPY package*.json ./
 
 # Instala las dependencias de la aplicación
-RUN npm install --production
+RUN npm install 
 
 # Copia todos los archivos de la aplicación al contenedor
-COPY . /frontend/
-
-# Compila la aplicación de Next.js para producción (esto puede variar dependiendo de cómo hayas configurado tu proyecto)
-RUN npm run build
+COPY . .
 
 # Expone el puerto en el que se ejecutará la aplicación en el contenedor
 EXPOSE 3000
