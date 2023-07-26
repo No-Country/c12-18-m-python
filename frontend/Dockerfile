@@ -1,5 +1,7 @@
+
 # Usamos una imagen de Node.js para construir la aplicación React
 FROM node:14 as build
+
 
 # Establecemos el directorio de trabajo
 WORKDIR /app
