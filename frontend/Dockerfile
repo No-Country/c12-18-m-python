@@ -1,23 +1,6 @@
 # Configuración de la imagen para el frontend Next.js
 FROM node:16
 
-# Crea y configura el directorio de trabajo
-RUN mkdir /frontend
-WORKDIR /frontend
-
-# Copia el código fuente del frontend a la imagen de Docker
-COPY . /frontend/
-
-# Instala las dependencias del frontend
-RUN npm install
-
-# Define el comando para arrancar el servidor Next.js
-CMD ["npm", "run", "dev"]
-
-
-# Usamos una imagen de Node.js para construir la aplicación React
-FROM node:14 
-
 # Establecemos el directorio de trabajo
 WORKDIR /app
 
