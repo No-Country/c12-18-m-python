@@ -8,13 +8,14 @@ export default function Client() {
   //Datos del usuario
   const authUser = auth.authTokens;
   return (
-    <div className="flex flex-row col-2 ">
-      <div className="">
+    <div className="grid w-full lg:flex">
+      <div className="w-full md:w-1/4">
         <AccountMax640 />
       </div>
-      <div className=" bg-white m-4 w-full justify-center">
+      <div className="bg-white rounded-xl p-2 my-2 mr-2 md:w-full w-full">
         <FormClient user={authUser} />
       </div>
     </div>
   );
 }
+
