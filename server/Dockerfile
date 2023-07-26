@@ -1,22 +1,18 @@
-# Usa una imagen base de Alpine
-FROM python:3.8-alpine
+# Usamos una imagen de Python para el backend
+FROM python:3.9
 
-# Establece el directorio de trabajo dentro del contenedor
+# Establecemos el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos de requerimientos
-COPY requirements.txt .
+# Copiamos los archivos necesarios y ejecutamos la instalación de dependencias
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Instala las dependencias necesarias
-RUN apk update && apk add --no-cache --virtual .build-deps build-base postgresql-dev libffi-dev \
-    && pip install --no-cache-dir --verbose -r requirements.txt \
-    && apk del .build-deps
-
-# Copia los archivos de tu aplicación Django al contenedor
+# Copiamos el resto de los archivos del backend
 COPY . .
 
-# Expone el puerto en el que se ejecuta tu aplicación Django
+# Exponemos el puerto 8000 (puerto predeterminado de Django)
 EXPOSE 8000
 
-# Define el comando para iniciar tu aplicación Django
+# Comando para ejecutar el servidor Django
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
