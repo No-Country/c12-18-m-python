@@ -19,12 +19,6 @@ export default function AdminServices() {
           </div>
         </div>
       </div>
-
-      <div className=" ">
-        <div className="sm:w-7/12 md:w-96 lg:w-2/6">
-          <span className="text-black text-base sm:flex justify-end">Service Name</span>
-        </div>
-      </div>
     </div>
   );
 }
