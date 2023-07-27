@@ -44,8 +44,8 @@ jobs:
         env:
           ECR_REGISTRY: 236649525998.dkr.ecr.us-west-2.amazonaws.com
         run: |
-          docker rmi -f backend2
-          docker build --no-cache -t backend2 ./server
-          docker tag backend2:latest $ECR_REGISTRY/backend2:latest
-          docker push $ECR_REGISTRY/backend:latest
+          docker rmi -f server
+          docker build --no-cache -t server ./server
+          docker tag server:latest $ECR_REGISTRY/server:latest
+          docker push $ECR_REGISTRY/server:latest
           
