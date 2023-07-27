@@ -8,7 +8,7 @@ services:
       - frontend_network
 
   server:
-    image: 36649525998.dkr.ecr.us-west-2.amazonaws.com/backend3
+    image: 36649525998.dkr.ecr.us-west-2.amazonaws.com/server
     ports:
       - "8000:8000"
     depends_on:
