@@ -26,17 +26,22 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Build and push frontend Docker image        
+      - name: Build and push frontend Docker image
+        env:
+          ECR_REGISTRY: 236649525998.dkr.ecr.us-west-2.amazonaws.com
+          ECR_REPOSITORY: "frontend"
         run: |
-          docker build -t ./server .
-          docker tag server:latest 236649525998.dkr.ecr.us-west-2.amazonaws.com/backend:latest          
-          docker push 236649525998.dkr.ecr.us-west-2.amazonaws.com/backend:latest
-                    
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY ./frontend
+          docker tag frontend:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest 
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
-      - name: Build and push backend Docker image        
+      - name: Build and push backend Docker image
+        env:
+          ECR_REGISTRY: 236649525998.dkr.ecr.us-west-2.amazonaws.com
+          ECR_REPOSITORY: "backend"
         run: |
-          docker build -t ./frontend .
-          docker tag frontend:latest 236649525998.dkr.ecr.us-west-2.amazonaws.com/frontend:latest          
-          docker push 236649525998.dkr.ecr.us-west-2.amazonaws.com/frontend:latest
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY ./server
+          docker tag server:latest $ECR_REGISTRY/$ECR_REPOSITORY:latest 
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
 
