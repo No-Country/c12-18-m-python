@@ -1,6 +1,7 @@
 "use client";
 // Importaciones necesarias de material tailwind
 import { Button, Card, CardHeader, CardBody, Typography } from "@material-tailwind/react";
+
 const Swal = require("sweetalert2");
 
 // Componente CardUsers
@@ -43,8 +44,10 @@ export default function CardUsers({ service, setDeleteService }) {
   return (
     // Contenedor principal de la tarjeta
     <Card className="m-2 mx-6 sm:flex flex-row sm:h-48 md:h-52 sm:m-1 lg:p-1">
+      
       {/* Encabezado de la tarjeta */}
       <CardHeader shadow={false} floated={false} className="m-0 rounded-r-none sm:w-96 sm:h-full sm:mb-0">
+        
         {/* Contenedor de la imagen */}
         <div className="sm:block hidden">
           {/* Ocultar imagen en pantallas menores a 640px */}
@@ -54,10 +57,11 @@ export default function CardUsers({ service, setDeleteService }) {
             className="w-auto border-2 border-indigo-950 h-full object-contain sm:p-3 rounded-md"
           />
         </div>
+        
       </CardHeader>
-
+      
       {/* Contenido de la tarjeta */}
-      <div className="w-full m-0 sm:w-full sm:h-full sm:mb-0">
+      <div className="flex flex-col w-full m-0 sm:w-full sm:h-full sm:mb-0">
         <CardBody className="sm:mt-0 sm:h-1/2">
           <div className="flex justify-between">
             {/* Información del servicio */}
@@ -65,17 +69,15 @@ export default function CardUsers({ service, setDeleteService }) {
               <Typography className="mb-0">
                 <span className="text-base font-bold text-blue-700">{service.name}</span>
               </Typography>
+
             </div>
-            {/* Botones de acción */}
-            <div className="order-last space-x-9 mb-0 md:mb-3 sm:mb-2 sm:space-x-10 md:space-x-20 lg:space-x-28">
-              <Button onClick={handleDelete} variant="text" className="text-red-600 m-0 p-0 sm:text-base md:text-sm">
-                DELETE
-              </Button>
+            
+            {/* Total */}
+            <div className="flex justify-end space-x-16 md:space-x-32">
+              <span className="font-bold text-xs lg:text-lg">Total:</span>
+              <span className="text-xs lg:text-lg">$(total)</span>
             </div>
           </div>
-          <Typography color="gray" className="font-normal scroll-smooth hover:scroll-auto">
-            <span className="text-sm">{service.description}</span>
-          </Typography>
         </CardBody>
       </div>
     </Card>

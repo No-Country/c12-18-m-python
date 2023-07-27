@@ -1,12 +1,10 @@
-'use client'
 import AdminFooterServices from "@/components/AdminFooterServices";
 import AdminServices from "@/components/AdminServices";
 import CardAdminServices from "@/components/CardAdminServices";
 import AdminAccount from "@/components/AdminAccount";
-import { GetService, fetchservices } from "@/stateComponents/ProbarServicios";
-import { useState, useEffect } from "react";
 
 export default function Allservices() {
+
 
   const [service, setService] = useState([]);
   const [deleteService, setDeleteService] = useState(false);
@@ -41,7 +39,7 @@ export default function Allservices() {
             }
           </div>
           <div>
-            <AdminFooterServices total={service.length}/>
+            <AdminFooterServices />
           </div>
         </div>
       </div>

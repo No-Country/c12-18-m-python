@@ -13,7 +13,7 @@ def CreateUser(request):
     if serializer.is_valid():
         user = (
             serializer.save()
-        )  # Utilizar el método save() del serializer para crear el usuario
+        )  # Utilizar el método save() del serializador para crear el usuario
         return Response(serializer.data, status=201)
     return Response(serializer.errors, status=400)
 
@@ -21,9 +21,11 @@ def CreateUser(request):
 @api_view(["GET"])
 def GetUsers(request):
     data = User.objects.all()
+
     user_id = request.query_params.get("id")
     if user_id:
         data = User.objects.filter(id=user_id)
+
 
     serializer = UserSerializer(data, context={"request": request}, many=True)
     return Response(serializer.data)
@@ -63,3 +65,4 @@ def UpdateUser(request):
         return Response(serializer.data)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

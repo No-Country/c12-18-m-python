@@ -88,14 +88,10 @@ WSGI_APPLICATION = "CoreApp.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-   'default': {
-      'ENGINE':'django.db.backends.postgresql',
-      'NAME':'bckfhssb',
-      'USER':'bckfhssb',
-      'PASSWORD':'6omSJNDU2G7Bmtg-yY30N-0xfUmrGUKs',
-      'HOST': 'trumpet.db.elephantsql.com',
-      'PORT': '',
-   }
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
 }
 
 # Password validation
