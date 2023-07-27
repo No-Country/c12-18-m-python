@@ -16,22 +16,12 @@ export default function Service() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await GetService();
-      console.log(data, " data")    
       let oneService= data.find(ser=> ser.id == id);  
       setService(oneService);
     };
 
     fetchData();
   }, []);
-  console.log(service, id, "soy services")
-  
-
- 
-
-
-
-
-  
   return (
     <>
       <Bannerup />

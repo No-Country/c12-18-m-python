@@ -23,7 +23,6 @@ const FormAddServices = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(JSON.stringify({ description, name, image, price }));
     // Aquí puedes realizar la lógica para enviar los datos del formulario al servidor
     try {
       const response = await fetch("http://localhost:8000/services/createservice/", {
@@ -37,7 +36,6 @@ const FormAddServices = () => {
       if (response.ok) {
         alert("El servicio se creó exitosamente");
       } else {
-        console.log("algo no estubo bien", error);
       }
     } catch (error) {
       console.error(error);
