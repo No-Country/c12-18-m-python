@@ -46,6 +46,6 @@ jobs:
         run: |
           docker rmi -f server
           docker build --no-cache -t server ./server
-          docker tag server:latest $ECR_REGISTRY/backend3:latest
+          docker tag server:latest $ECR_REGISTRY/server:latest
           docker push $ECR_REGISTRY/server:latest
           
