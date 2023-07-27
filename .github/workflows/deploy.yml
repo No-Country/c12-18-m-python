@@ -37,7 +37,7 @@ jobs:
           ECR_REGISTRY: 236649525998.dkr.ecr.us-west-2.amazonaws.com          
         run: |          
           docker build --no-cache -t frontend ./frontend
-          docker tag frontupdate $ECR_REGISTRY/frontend:tag
+          docker tag frontend $ECR_REGISTRY/frontend:v2
           docker push $ECR_REGISTRY/frontend:tag
           
       - name: Build and push backend Docker image
@@ -45,7 +45,7 @@ jobs:
           ECR_REGISTRY: 236649525998.dkr.ecr.us-west-2.amazonaws.com          
         run: |          
           docker build --no-cache -t server ./server
-          docker tag serupdate $ECR_REGISTRY/server:tag
+          docker tag server $ECR_REGISTRY/server:v2
           docker push $ECR_REGISTRY/server:tag
 
            
