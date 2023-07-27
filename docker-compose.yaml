@@ -3,12 +3,12 @@ services:
   frontend:
     image: 236649525998.dkr.ecr.us-west-2.amazonaws.com/frontend
     ports:
-      - "80:80"
+      - "3000:3000"
     networks:
       - frontend_network
 
   server:
-    image: 236649525998.dkr.ecr.us-west-2.amazonaws.com/backend
+    image: 236649525998.dkr.ecr.us-west-2.amazonaws.com/backend2
     ports:
       - "8000:8000"
     depends_on:
