@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useAuthContext } from "@/contexts/authContext";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+const Swal = require("sweetalert2");
 import Image from "next/image";
 
 export default function OneService({ service }) {
@@ -88,12 +89,12 @@ export default function OneService({ service }) {
          }),
       });
       if (response.ok) {
-        alert('La cita se creo correctamente');
+        Swal.fire("Created!", "Your apppointment has been schedule.", "success");
       } else {
-        console.log('algo no estuvo bien', error);
+        Swal.fire("Error", "Something went wrong", "error");
       }
     } catch (error) {
-      console.error(error);
+      Swal.fire("Error", "Something went wrong", "error");
     }
   };
 
