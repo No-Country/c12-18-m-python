@@ -13,6 +13,7 @@ export default function Service() {
   const {id} = useParams();
   const [service, setService] = useState([]); 
 
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await GetService();
