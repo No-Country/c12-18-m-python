@@ -36,7 +36,7 @@ jobs:
         env:
           ECR_REGISTRY: 236649525998.dkr.ecr.us-west-2.amazonaws.com          
         run: |
-          docker rmi -f $(docker images -q)
+          docker rmi -f $(docker images -f dangling=true -q)
           docker build --no-cache -t frontend ./frontend
           docker push $ECR_REGISTRY/$ECR_REPOSITORY
 
