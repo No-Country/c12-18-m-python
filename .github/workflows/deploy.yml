@@ -38,7 +38,7 @@ jobs:
         run: |
           docker rmi -f $(docker images -q)
           docker build --no-cache -t frontend ./frontend
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY
 
       - name: Build and push backend Docker image
         env:
@@ -46,5 +46,5 @@ jobs:
         run: |              
           docker backend rm  -f
           docker build --no-cache -t backend ./server
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY
           
