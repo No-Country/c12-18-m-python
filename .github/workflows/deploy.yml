@@ -38,13 +38,14 @@ jobs:
         run: |
           docker rmi $(docker images -f "dangling=false" --format '{{.Repository}}:{{.Tag}}' | grep 'frontend' | uniq)
           docker build --no-cache -t frontend ./frontend
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY
+          docker tag frontend:latest $ECR_REGISTRY/frontend:latest
+          docker push $ECR_REGISTRY/frontend:latest
 
       - name: Build and push backend Docker image
         env:
           ECR_REGISTRY: 236649525998.dkr.ecr.us-west-2.amazonaws.com
         run: |
           docker rmi $(docker images -f "dangling=false" --format '{{.Repository}}:{{.Tag}}' | grep 'backend' | uniq)          
-          docker build --no-cache -t backend ./server
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY
+          docker tag backend:latest $ECR_REGISTRY/backend:latest
+          docker push $ECR_REGISTRY/backend:latest
           
