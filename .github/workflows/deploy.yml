@@ -42,10 +42,10 @@ jobs:
 
       - name: Build and push backend Docker image
         env:
-          ECR_REGISTRY: public.ecr.aws/c4z9w4j1/backend3
+          ECR_REGISTRY: 236649525998.dkr.ecr.us-west-2.amazonaws.com 
         run: |
-          docker rmi -f backend33
+          docker rmi -f backend3
           docker build --no-cache -t backend3 ./server
-          docker tag backend3:latest public.ecr.aws/c4z9w4j1/backend3:latest
-          docker push public.ecr.aws/c4z9w4j1/backend3:latest
+          docker tag backend3:latest $ECR_REGISTRY/backend3:latest
+          docker push $ECR_REGISTRY/backend3:latest
           
