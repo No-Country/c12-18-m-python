@@ -2,17 +2,17 @@
 import Link from "next/link";
 import { Card, CardHeader, CardBody, Typography, Button, CardFooter } from "@material-tailwind/react";
 
-export default function SingleCard({ service}) {  
-  const {image, name, price, id} = service;
+export default function SingleCard({ service }) {
+  const { image, name, price, id } = service;
 
-   return (
+  return (
     <div className="basis-1/4 p-3 ">
       <Card className="hover:scale-105">
-        <CardHeader shadow={false} floated={false} className="h-55">
-          <img src={image} title={name} className="w-full h-full object-cover " />
+        <CardHeader shadow={false} floated={false} className="h-40"> {/* Ajustar la altura deseada */}
+          <img src={image} title={name} className="w-full h-full object-contain" /> {/* Usar object-contain para ajustar la imagen */}
         </CardHeader>
         <CardBody>
-          <div className="flex items-center justify-between mb-2">
+          <div className="grid mb-2">
             <Typography color="blue-gray" className="font-playfair">
               {name}
             </Typography>
@@ -22,18 +22,16 @@ export default function SingleCard({ service}) {
           </div>
         </CardBody>
         <CardFooter className="pt-0">
-        <Link href={`/services/${id}`}>
-        <Button
-            className=" shadow-none hover:shadow-none hover:bg-pink hover:text-white focus:shadow-none focus:scale-105 active:scale-100 "
-            fullWidth
-            color="gray"
-            variant="outlined"   
-            
-          >
-            more about this 
-          </Button>
+          <Link href={`/services/${id}`}>
+            <Button
+              className="shadow-none hover:shadow-none hover:bg-pink hover:text-white focus:shadow-none focus:scale-105 active:scale-100"
+              fullWidth
+              color="gray"
+              variant="outlined"
+            >
+              more about this
+            </Button>
           </Link>
-         
         </CardFooter>
       </Card>
     </div>

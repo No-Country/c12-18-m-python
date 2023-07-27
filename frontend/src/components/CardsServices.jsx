@@ -106,9 +106,6 @@ const serv = [
 ];
 
 export default function CardsServices({ page }) {
-  // prop que dice en que pagina esta para renderizado condicional = "services"
-  //Cuandoe esta en la pagina principal se renderizan 8 cards slice(0, 8) y el link ALL SERVICES
-  // Cuando esta en la pagina services se renderizan todos los servicios y se desaparece ALL SERVICES
   const [services, setServices] = useState([]);
 
   useEffect(() => {
@@ -121,40 +118,35 @@ export default function CardsServices({ page }) {
   }, []);
 
   return (
-    <div>
-
-      <div className="flex flexflex-row p-3 min-[320px]: flex-wrap">
+    <div className="w-96 mx-auto sm:w-full"> {/* Paso 1: Agregamos el contenedor principal */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"> {/* Paso 2: Distribución de las cards */}
+        {/* Renderizar las cards aquí */}
         {page == "services"
           ? services.map((service, index) => {
               return (
-                //Se renderizan todos los servicios
-
-
                 <SingleCard key={index} service={service} />
-
               );
             })
           : services.slice(0, 8).map((service, index) => {
               return (
-                //Se renderizan 8
-
-
                 <SingleCard key={index} service={service} />
-
               );
             })}
-
       </div>
+
       {/* Renderizado condicional para agregar o quitar la palabra ALL SERVICES */}
       {page == "services" ? (
         <div></div>
       ) : (
-        <div className="flex flexflex-row p-8 justify-center">
+        <div className="text-center py-2"> {/* Paso 3: Estilo para el botón */}
           <Link href="/services">
-            <Typography className=" font-manrope text-pink font-bold  hover:text-black">ALL SERVICES</Typography>
+            <Typography className="font-manrope text-pink font-bold hover:text-black">ALL SERVICES</Typography>
           </Link>
         </div>
       )}
     </div>
   );
 }
+
+
+
