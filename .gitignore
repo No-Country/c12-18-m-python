@@ -198,6 +198,7 @@ cover/
 # Django stuff:
 local_settings.py
 *.sqlite3
+db.sqlite3-journal
 
 # Flask stuff:
 instance/

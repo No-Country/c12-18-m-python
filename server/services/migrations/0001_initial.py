@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ("name", models.CharField(max_length=100, verbose_name="name")),
                 (
                     "description",
-                    models.CharField(max_length=1000, verbose_name="description"),
+                    models.CharField(max_length=500, verbose_name="description"),
                 ),
                 (
                     "price",

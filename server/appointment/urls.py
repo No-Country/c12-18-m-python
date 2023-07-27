@@ -3,12 +3,9 @@ from .views import *
 
 
 urlpatterns = [
-    path("create/", CreateAppointment),
-    path("list/", ListAppointments),
-    path("user/", UserAppointments),
-    path("hours/", AvailableHours),
-    path(
-        "updateappointment/",
-        UpdateUserAppointment,
-    ),
+    path('create/', CreateAppointment),
+    path('list/', ListAppointments),
+    path('user/', UserAppointments),
+    path('hours/', AvailableHours),
 ]
+

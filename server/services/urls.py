@@ -5,5 +5,4 @@ from .views import *
 urlpatterns = [
     path("createservice/", CreateService),
     path("getservice/", GetService),
-    path('delete/', DeleteService),
 ]

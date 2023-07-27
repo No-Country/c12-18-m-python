@@ -1,4 +1,4 @@
-export default function AdminFooterServices({ total }) {
+export default function AdminFooterServices() {
     return (
       <div className="bg-white m-1 p-2">        
         <div className="flex justify-between my-1">
@@ -8,13 +8,13 @@ export default function AdminFooterServices({ total }) {
           <div className="flex justify-between mb-0 p-0 sm:justify-end w-80 md:w-full h-8 md:mr-4">
               <div>
                 <span className="text-black text-base font-bold flex justify-end w-28 sm:w-20">
-                  Total:
+                  Total:$
                 </span>
               </div>
               {/* Total de ventas */}
               <div>
                 <span 
-                className="text-black text-base w-32 flex justify-center sm:ustify-end sm:w-32">{total}</span>
+                className="text-black text-base w-32 flex justify-center sm:ustify-end sm:w-32">(total)</span>
              
               </div>
             </div>
