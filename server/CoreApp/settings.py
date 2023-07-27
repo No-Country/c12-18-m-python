@@ -26,9 +26,9 @@ SECRET_KEY = "django-insecure-7bp3lliia0k8715id3avm03&5n&^ec@!zpwy5cfbi0m_w6bhcq
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "54f3-191-111-232-2.ngrok-free.app",
-    "127.0.0.1",
-    "localhost",
+    '54f3-191-111-232-2.ngrok-free.app',
+    '127.0.0.1',
+    'localhost',
 ]
 
 
@@ -88,14 +88,10 @@ WSGI_APPLICATION = "CoreApp.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-   'default': {
-      'ENGINE':'django.db.backends.postgresql',
-      'NAME':'bckfhssb',
-      'USER':'bckfhssb',
-      'PASSWORD':'6omSJNDU2G7Bmtg-yY30N-0xfUmrGUKs',
-      'HOST': 'trumpet.db.elephantsql.com',
-      'PORT': '',
-   }
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
 }
 
 # Password validation
