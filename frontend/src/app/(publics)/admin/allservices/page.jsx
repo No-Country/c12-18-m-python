@@ -33,7 +33,7 @@ export default function Allservices() {
           <div>
             <AdminServices />
           </div>
-          <div className="mb-0">
+          <div className="mb-1">
             {
               service.map(service => 
                 <CardAdminServices service={service} setDeleteService={setDeleteService}/>
