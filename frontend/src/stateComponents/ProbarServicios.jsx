@@ -25,6 +25,5 @@ async function fetchservices() {
 
 export async function GetService() {
   const services = await fetchservices();
-  console.log(services);
   return services;
 }
