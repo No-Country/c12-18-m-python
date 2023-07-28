@@ -1,0 +1,28 @@
+version: '3'
+services:
+  frontend:
+    image: 236649525998.dkr.ecr.us-west-2.amazonaws.com/frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - frontend_network
+
+  server:
+    image: 236649525998.dkr.ecr.us-west-2.amazonaws.com/server
+    ports:
+      - "8000:8000"
+    depends_on:
+      - frontend
+    environment:      
+      - DJANGO_FRONTEND_URL=http://frontend:80
+      - DEBUG=True
+      - DJANGO_ALLOWED_HOSTS=*
+      # Resto de variables de entorno para el backend
+    volumes:
+      - static_data:/app/static
+    networks:
+      - frontend_network
+
+networks:
+  frontend_network:
+    driver: bridge
