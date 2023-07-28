@@ -30,6 +30,36 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
+      - name: Cleanup old images in frontend ECR
+        env:
+          AWS_REGION: us-west-2
+          ECR_REPOSITORY_NAME1: frontend    
+        run: |
+          IMAGE_TAG=v2  # Cambia esto por la etiqueta de la imagen que quieres eliminar (en este caso, v2)
+          # Get the list of images in the repository
+          IMAGES=$(aws ecr list-images --repository-name $ECR_REPOSITORY_NAME --query 'imageIds[*].imageTag' --output text)
+          
+          # Check if the current image tag already exists in the repository
+          if echo "$IMAGES" | grep -q "$IMAGE_TAG"; then
+            # Delete the old image
+            aws ecr batch-delete-image --repository-name $ECR_REPOSITORY_NAME --image-ids imageTag=$IMAGE_TAG
+          fi
+
+      - name: Cleanup old images in backend ECR
+        env:
+          AWS_REGION: us-west-2
+          ECR_REPOSITORY_NAME1: server   
+        run: |
+          IMAGE_TAG=v2  # Cambia esto por la etiqueta de la imagen que quieres eliminar (en este caso, v2)
+          # Get the list of images in the repository
+          IMAGES=$(aws ecr list-images --repository-name $ECR_REPOSITORY_NAME --query 'imageIds[*].imageTag' --output text)
+          
+          # Check if the current image tag already exists in the repository
+          if echo "$IMAGES" | grep -q "$IMAGE_TAG"; then
+            # Delete the old image
+            aws ecr batch-delete-image --repository-name $ECR_REPOSITORY_NAME --image-ids imageTag=$IMAGE_TAG
+          fi
+
       - name: Build and push frontend Docker image
         env:
           ECR_REGISTRY: 236649525998.dkr.ecr.us-west-2.amazonaws.com          
