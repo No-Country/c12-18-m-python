@@ -60,13 +60,13 @@ jobs:
             aws ecr batch-delete-image --repository-name $ECR_REPOSITORY_NAME --image-ids imageTag=$IMAGE_TAG
           fi
 
-#       - name: Build and push frontend Docker image
-#         env:
-#           ECR_REGISTRY: 236649525998.dkr.ecr.us-west-2.amazonaws.com          
-#         run: |          
-#           docker build --no-cache -t frontend ./frontend
-#           docker tag frontend $ECR_REGISTRY/frontend:v2
-#           docker push $ECR_REGISTRY/frontend:v2
+      - name: Build and push frontend Docker image
+        env:
+          ECR_REGISTRY: 236649525998.dkr.ecr.us-west-2.amazonaws.com          
+        run: |          
+          docker build --no-cache -t frontend ./frontend
+          docker tag frontend $ECR_REGISTRY/frontend:v2
+          docker push $ECR_REGISTRY/frontend:v2
           
       - name: Build and push backend Docker image
         env:
