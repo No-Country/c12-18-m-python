@@ -33,7 +33,7 @@ jobs:
       - name: Cleanup old images in frontend ECR
         env:
           AWS_REGION: us-west-2
-          ECR_REPOSITORY_NAME1: frontend    
+          ECR_REPOSITORY_NAME: frontend    
         run: |
           IMAGE_TAG=v2  # Cambia esto por la etiqueta de la imagen que quieres eliminar (en este caso, v2)
           # Get the list of images in the repository
@@ -48,7 +48,7 @@ jobs:
       - name: Cleanup old images in backend ECR
         env:
           AWS_REGION: us-west-2
-          ECR_REPOSITORY_NAME1: server   
+          ECR_REPOSITORY_NAME: server   
         run: |
           IMAGE_TAG=v2  # Cambia esto por la etiqueta de la imagen que quieres eliminar (en este caso, v2)
           # Get the list of images in the repository
