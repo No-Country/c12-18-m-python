@@ -10,7 +10,7 @@ export default function Appointments() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/appointment/list/",
+          "http://35.92.64.36:8000/appointment/list/",
 
           {
             method: "GET",

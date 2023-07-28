@@ -9,7 +9,7 @@ import Image from "next/image";
 export default function CardUsers({ service, setDeleteService }) {
   const deleteService = async () => {
     try {
-      const url = `http://127.0.0.1:8000/services/delete/?id=${service.id}`; // URL de la API
+      const url = `http://35.92.64.36:8000/services/delete/?id=${service.id}`; // URL de la API
       const response = await fetch(url, {
         method: "DELETE",
         headers: {

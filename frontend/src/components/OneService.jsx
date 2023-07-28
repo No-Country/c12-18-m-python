@@ -52,7 +52,7 @@ export default function OneService({ service }) {
   const getTime = async () => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:8000/appointment/hours/?service=${id.toString()}&day=${dateFormat}`,
+        `http://35.92.64.36:8000/appointment/hours/?service=${id.toString()}&day=${dateFormat}`,
 
         {
           method: "GET",
@@ -77,7 +77,7 @@ export default function OneService({ service }) {
   const postAppointment = async () => {
     console.log("entre a enviar");
     try {
-      const response = await fetch('http://127.0.0.1:8000/appointment/create/', {
+      const response = await fetch('http://35.92.64.36:8000/appointment/create/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -109,6 +109,8 @@ export default function OneService({ service }) {
     getTime();
     setGetHours(false);
   }, [getHours]);
+
+  console.log(allHours, "hours")
 
   return (
     <Card className="flex flex-row h-full ">

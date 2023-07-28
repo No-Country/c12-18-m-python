@@ -1,7 +1,9 @@
+
+const ip= "35.92.64.36" 
 async function fetchservices() {
   try {
     const response = await fetch(
-      "http://127.0.0.1:8000/services/getservice/",
+      `http://${ip}:8000/services/getservice/`, 
 
       {
         method: "GET",

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Card, Input, Button, Typography, Textarea } from "@material-tailwind/react";
 import Image from "next/image";
+const Swal = require("sweetalert2");
+import Link from "next/link";
 
 const FormAddServices = () => {
   const defaultImg = 'https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/8_dha6se.jpg'
@@ -27,7 +29,7 @@ const FormAddServices = () => {
     console.log(JSON.stringify({ description, name, image, price }));
     // Aquí puedes realizar la lógica para enviar los datos del formulario al servidor
     try {
-      const response = await fetch("http://localhost:8000/services/createservice/", {
+      const response = await fetch("http://35.92.64.36:8000/services/createservice/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,12 +38,12 @@ const FormAddServices = () => {
       });
 
       if (response.ok) {
-        alert("El servicio se creó exitosamente");
+        Swal.fire("Created!", "A new services has been created.", "success");
       } else {
-        console.log("algo no estubo bien", error);
+        Swal.fire("Error!", "Something went wrong", "error");
       }
     } catch (error) {
-      console.error(error);
+      Swal.fire("Error!", "Something went wrong", "error");
       // Maneja el error en caso de que ocurra un error en la solicitud
     }
 
@@ -58,12 +60,28 @@ const FormAddServices = () => {
         <Typography variant="h4" color="blue-gray" className="font-playfair">
           Add services
         </Typography>
+
+<div className="p-4">
+        <Link href="/admin/allservices">
+        <Button
+            className=" bg-pink shadow-none hover:shadow-none text-white  focus:shadow-none focus:scale-105 active:scale-100 "
+            fullWidth
+            color="gray"
+            variant="outlined"
+            type="submit"
+          >
+            Back to All Services
+          </Button>
+        </Link>
+        </div>
+
         <Image
           width={700}
           height={250}
           alt={"masaje"}
           src={form.image ? form.image : defaultImg}
         />
+        
         <form onSubmit={handleSubmit} className="m-4  w-full ">
           <div className="mb-4 flex flex-col w-full ">
             <label htmlFor="image">Service Image</label>

@@ -25,7 +25,7 @@ export default function Register() {
     console.log(JSON.stringify({ username, first_name, email, password }));
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/user/createuser/', {
+      const response = await fetch('http://35.92.64.36:8000/user/createuser/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
