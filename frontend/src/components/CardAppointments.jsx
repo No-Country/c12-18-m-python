@@ -1,6 +1,7 @@
 "use client";
 // Importaciones necesarias de material tailwind
 import { Card, CardHeader, CardBody, Typography } from "@material-tailwind/react";
+import Image from "next/image";
 
 // Componente CardHistorySales
 // Este es el componente principal que muestra la tarjeta de ventas del historial.
@@ -10,8 +11,10 @@ export default function CardAppointments({ appointment }) {
       {/* Encabezado de la tarjeta */}
       <CardHeader shadow={false} floated={false} className="m-0 rounded-r-none sm:w-96 sm:h-full sm:mb-0">
         {/* Imagen del encabezado */}
-        <img
-          src="https://acortar.link/ktZC37"
+        <Image
+          width={0}
+          height={0}
+          src={appointment.service.image}
           alt="image"
           className="w-auto border-2 border-indigo-950 h-full object-contain sm:p-3 rounded-md"
         />
@@ -48,7 +51,7 @@ export default function CardAppointments({ appointment }) {
             </div>
             {/* Sección con el total de ventas */}
             <div className="flex justify-between mb-0 p-0 sm:justify-end w-full md:w-full h-8 md:mr-4">
-                <span className="text-black text-base font-bold flex justify-end w-full">Total: ${appointment.service.price}</span>
+              <span className="text-black text-base font-bold flex justify-end w-full">Total: ${appointment.service.price}</span>
             </div>
           </div>
         </CardBody>

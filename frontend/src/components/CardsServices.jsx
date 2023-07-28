@@ -5,105 +5,8 @@ import SingleCard from "./SigleCard";
 import { GetService, fetchservices } from "@/stateComponents/ProbarServicios";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { PushSpinner } from "react-spinners-kit";
 
-//info temporal de los servicios
-const serv = [
-  {
-    name: "Haircut",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/3_btnysw.png",
-    price: 200,
-  },
-  {
-    name: "Body Massage",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/8_dha6se.jpg",
-    price: 300,
-  },
-  {
-    name: "Hairstyle",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/2_ilflki.png",
-    price: 300,
-  },
-  {
-    name: "Night Makeup",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/1_ukjqww.png",
-    price: 100,
-  },
-  {
-    name: "Body Wax",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/7_xq2cof.webp",
-    price: 700,
-  },
-  {
-    name: "Manicure",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689039610/manicure-spa-pedicure-salon-florestilista_1_qyhw51.png",
-    price: 100,
-  },
-  {
-    name: "Foot Therapy",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/5_xrp59b.jpg",
-    price: 100,
-  },
-  {
-    name: "Microblandin",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/4_ktb8yv.webp",
-    price: 100,
-  },
-  {
-    name: "Microblandin",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/4_ktb8yv.webp",
-    price: 100,
-  },
-  {
-    name: "Microblandin",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/4_ktb8yv.webp",
-    price: 100,
-  },
-  {
-    name: "Haircut",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/3_btnysw.png",
-    price: 200,
-  },
-  {
-    name: "Body Massage",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/8_dha6se.jpg",
-    price: 300,
-  },
-  {
-    name: "Hairstyle",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/2_ilflki.png",
-    price: 300,
-  },
-  {
-    name: "Haircut",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/3_btnysw.png",
-    price: 200,
-  },
-  {
-    name: "Body Massage",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/8_dha6se.jpg",
-    price: 300,
-  },
-  {
-    name: "Hairstyle",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/2_ilflki.png",
-    price: 300,
-  },
-  {
-    name: "Haircut",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/3_btnysw.png",
-    price: 200,
-  },
-  {
-    name: "Body Massage",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081781/8_dha6se.jpg",
-    price: 300,
-  },
-  {
-    name: "Hairstyle",
-    href: "https://res.cloudinary.com/dbmqhlv4o/image/upload/v1689081780/2_ilflki.png",
-    price: 300,
-  },
-];
 
 export default function CardsServices({ page }) {
   // prop que dice en que pagina esta para renderizado condicional = "services"
@@ -120,27 +23,22 @@ export default function CardsServices({ page }) {
     fetchData();
   }, []);
 
-  return (
-    <div>
-
-      <div className="flex flexflex-row p-3 min-[320px]: flex-wrap">
+  return (  
+    <div>      
+       {services ?        
+        <div>
+          <div className="flex flexflex-row p-3 min-[320px]: flex-wrap">
         {page == "services"
           ? services.map((service, index) => {
               return (
                 //Se renderizan todos los servicios
-
-
                 <SingleCard key={index} service={service} />
-
               );
             })
           : services.slice(0, 8).map((service, index) => {
               return (
                 //Se renderizan 8
-
-
                 <SingleCard key={index} service={service} />
-
               );
             })}
 
@@ -155,6 +53,13 @@ export default function CardsServices({ page }) {
           </Link>
         </div>
       )}
+        </div>
+        : 
+
+        <PushSpinner size={30} color="#686769" loading={loading} />
+      }
+
+      
     </div>
   );
 }

@@ -11,6 +11,7 @@ export default function OneService({ service }) {
   const { image, name, price, description, id } = service;
   const auth = useAuthContext();
   const authUser= auth.authTokens
+  console.log(authUser, "user")
 
 
   const [book, setBook] = useState("false");

@@ -20,10 +20,10 @@ export default function Navbar() {
   const authUser= auth.authTokens   
   var path;
 
-  //modificar a "true" authUser.admin cuando este dashboar de cliente
+  
   function pathUser(){
     if(auth.isLoggedIn === true){
-    if (authUser.admin == false ){
+    if (authUser.admin == true ){
       path="/admin"
     }else{
       path="/client"

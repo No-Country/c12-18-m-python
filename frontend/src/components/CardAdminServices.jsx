@@ -2,6 +2,8 @@
 // Importaciones necesarias de material tailwind
 import { Button, Card, CardHeader, CardBody, Typography } from "@material-tailwind/react";
 const Swal = require("sweetalert2");
+import { PushSpinner } from "react-spinners-kit";
+import Image from "next/image";
 
 // Componente CardUsers
 export default function CardUsers({ service, setDeleteService }) {
@@ -41,8 +43,9 @@ export default function CardUsers({ service, setDeleteService }) {
   };
 
   return (
-    // Contenedor principal de la tarjeta
-    <Card className="m-2 mx-6 sm:flex flex-row sm:h-48 md:h-52 sm:m-1 lg:p-1">
+    <div>
+    { service.length == 0 ? <Image alt="spiner " height={90} width={30} src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921"/> :  
+       <Card className="m-2 mx-6 sm:flex flex-row sm:h-48 md:h-52 sm:m-1 lg:p-1">
       {/* Encabezado de la tarjeta */}
       <CardHeader shadow={false} floated={false} className="m-0 rounded-r-none sm:w-96 sm:h-full sm:mb-0">
         {/* Contenedor de la imagen */}
@@ -55,7 +58,6 @@ export default function CardUsers({ service, setDeleteService }) {
           />
         </div>
       </CardHeader>
-
       {/* Contenido de la tarjeta */}
       <div className="w-full m-0 sm:w-full sm:h-full sm:mb-0">
         <CardBody className="sm:mt-0 sm:h-1/2">
@@ -78,6 +80,10 @@ export default function CardUsers({ service, setDeleteService }) {
           </Typography>
         </CardBody>
       </div>
-    </Card>
+    </Card>  
+    
+    }   
+    </div> 
   );
+  
 }
