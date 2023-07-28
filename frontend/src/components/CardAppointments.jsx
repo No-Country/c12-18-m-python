@@ -12,7 +12,7 @@ export default function CardAppointments({ appointment }) {
       <CardHeader shadow={false} floated={false} className="m-0 rounded-r-none sm:w-96 sm:h-full sm:mb-0">
         {/* Imagen del encabezado */}
         <Image
-          width={0}
+          width={200}
           height={0}
           src={appointment.service.image}
           alt="image"
