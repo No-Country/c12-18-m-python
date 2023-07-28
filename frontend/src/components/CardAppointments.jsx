@@ -22,7 +22,7 @@ export default function CardAppointments({ appointment }) {
           {/* Sección con fecha y hora */}
           <div className="grid grid-cols-3 sm:justify-end w-full md:w-full h-8 md:mr-4">
             <div className="">
-              <span className="uppercase text-blue-500 font-bold">{appointment.service.name}</span>
+              <span className="uppercase text-blue-500 font-bold">{appointment.day}</span>
             </div>
             <div className="">
               <span className="text-black text-base sm:flex w-40">Date: {appointment.day}</span>
@@ -36,10 +36,10 @@ export default function CardAppointments({ appointment }) {
             <div className="m-0 p-0 mb-2">
               {/* Nombre del usuario */}
               <Typography className="mb-0">
-                <span className="font-bold">User: {appointment.user.first_name}</span>
+                <span className="font-bold">User: {appointment.day}</span>
               </Typography>
               {/* Correo electrónico del usuario */}
-              <Typography className="font-normal sm:text-base">Email: {appointment.user.email}</Typography>
+              <Typography className="font-normal sm:text-base">Email: {appointment.day}</Typography>
             </div>
             <div className="flex justify-between w-72 mb-2 sm:w-80 md:space-x-8 space-x-6 md:text-xl">
               {/* Estado del pedido */}
@@ -48,7 +48,7 @@ export default function CardAppointments({ appointment }) {
             </div>
             {/* Sección con el total de ventas */}
             <div className="flex justify-between mb-0 p-0 sm:justify-end w-full md:w-full h-8 md:mr-4">
-                <span className="text-black text-base font-bold flex justify-end w-full">Total: ${appointment.service.price}</span>
+              <span className="text-black text-base font-bold flex justify-end w-full">Total: ${appointment.day}</span>
             </div>
           </div>
         </CardBody>

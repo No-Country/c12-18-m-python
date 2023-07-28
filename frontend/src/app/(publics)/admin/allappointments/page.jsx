@@ -31,6 +31,7 @@ export default function Appointments() {
     };
 
     fetchData();
+    console.log(appointments, 'soy appointments');
   }, []);
 
   return (
@@ -46,7 +47,7 @@ export default function Appointments() {
 
         <div>
           {appointments.map((appointment) => (
-            <CardAppointments appointment={appointment} />
+            <CardAppointments key={appointment.id} appointment={appointment} />
           ))}
         </div>
       </div>
