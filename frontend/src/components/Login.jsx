@@ -23,7 +23,7 @@ export default function Login() {
     e.preventDefault();
     console.log(JSON.stringify(form));
     try {
-      const response = await fetch(`http://35.92.64.36/user/auth/?username=${form.username}&&password=${form.password}`, {
+      const response = await fetch(`http://35.92.64.36:8000/user/auth/?username=${form.username}&&password=${form.password}`, {
         method: "GET",
         headers: {
           "Content-Type": "form-data",
